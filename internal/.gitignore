@@ -1,0 +1,28 @@
+# TorServe ignore rules
+
+# Ignore release bundles and build artifacts
+/release/
+/*.zip
+/*.tar.gz
+
+# Ignore compiled binaries (Linux & Windows)
+torserve
+torserve.exe
+
+# Tor-generated hidden service directory
+/hidden_service/
+
+# Logs and temp artifacts
+*.log
+output.html
+
+# Ignore platform-specific metadata
+.DS_Store
+Thumbs.db
+
+# Go build/cache/test output
+/bin/
+/dist/
+/*.test
+*.out
+*.exe~   # backup files
