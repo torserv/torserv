@@ -80,7 +80,7 @@ cd TorServ
 ./torserve
 ```
 
-> The Tor hidden service will start and print a `.onion` address in the terminal. Use the Tor Browser to access your new hidden service. Download the browser here – [Tor Project](https://support.torproject.org/) 
+> The Tor hidden service will start and print a `.onion` address in the terminal. Use the Tor Browser to access your new hidden service. Download the browser here – [Tor Project](https://torproject.org/download/) 
 
 ---
 
