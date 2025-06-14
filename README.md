@@ -44,7 +44,6 @@ The `.onion` address for your site is generated automatically and printed in the
 - **Response padding** – Normalizes response sizes to resist size fingerprinting
 - **No caching** – Disables ETag, Last-Modified, and other caching headers
 - **No outbound JavaScript** – All assets are bundled and served locally
-- **Ephemeral mode** – Optional: generates a temporary `.onion` and discards key on shutdown
 - **Multilingual safety guide** – Included React-based UI explains risks and usage across multiple languages
 
 ---
