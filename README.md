@@ -1,3 +1,4 @@
+HEAD
 # 🛠️ TorServe
 
 **TorServe** is a hardened, zero-config static web server that automatically launches as a Tor hidden service. It allows users to anonymously publish web content with no setup, making it ideal for use in hostile or censored environments.
@@ -151,3 +152,21 @@ I welcome:
 - Praise or constructive criticism
 
 Open a GitHub issue or pull request to get involved.
+=======
+## Hi there 👋
+
+<!--
+**torserv/torserv** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
+f22c32046d59fc4b415cdf0691f591d1eafde19c
