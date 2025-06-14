@@ -35,23 +35,6 @@ The `.onion` address for your site is generated automatically and printed in the
 
 ---
 
-## 📁 File Structure
-
-```
-```
-TorServ/
-├── torserve        # Main binary (or torserve.exe on Windows)
-├── torrc             # Minimal Tor config
-├── public/         # Static content root
-│   ├── index.html
-│   ├── fonts/      # Web fonts for multilingual UI
-│   └── ...            # Other translations or assets
-├── LICENSE
-├── README.md
-```
-
----
-
 ## 🧠 Safety Features
 
 - **Header hardening** – Strips User-Agent, Referer, ETag, and other identifying headers
