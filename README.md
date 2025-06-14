@@ -133,22 +133,10 @@ I welcome:
 - Code contributions
 - Praise or constructive criticism
 
+Indent mode
+Indent size
+Line wrap mode
+Indent mode
+Indent size
+Line wrap mode
 Open a GitHub issue or pull request to get involved.
-=======
-## Hi there 👋
-
-<!--
-**torserv/torserv** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-f22c32046d59fc4b415cdf0691f591d1eafde19c
