@@ -10,7 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"torserve/internal/cloak"
 	"torserve/internal/rawhttp"
 	"torserve/internal/scrub"
 
@@ -32,45 +31,6 @@ func (h *headerFilter) WriteHeader(code int) {
 		h.headersWritten = true
 	}
 	h.ResponseWriter.WriteHeader(code)
-}
-
-// --- First: serveStaticFile function ---
-func serveStaticFile(w http.ResponseWriter, r *http.Request) {
-	path := r.URL.Path
-
-	if path == "/" {
-		path = "/index.html"
-	}
-
-	filePath := fmt.Sprintf("public%s", path)
-
-	data, err := os.ReadFile(filePath)
-	if err != nil {
-		log.Printf("[ERROR] Failed to read file %s: %v", filePath, err)
-		http.NotFound(w, r)
-		return
-	}
-
-	contentType := http.DetectContentType(data)
-	w.Header().Set("Content-Type", contentType)
-
-	// Security headers
-	w.Header().Set("Cache-Control", "no-store")
-	w.Header().Set("Pragma", "no-cache")
-	w.Header().Set("Expires", "0")
-	w.Header().Set("Server", "")
-	w.Header().Set("X-Content-Type-Options", "nosniff")
-	w.Header().Set("X-Frame-Options", "DENY")
-	w.Header().Set("X-XSS-Protection", "1; mode=block")
-
-	w.WriteHeader(http.StatusOK)
-
-	if strings.HasSuffix(filePath, ".html") {
-		rewritten := cloak.RewriteHTMLLinks(string(data))
-		w.Write([]byte(rewritten))
-	} else {
-		w.Write(data)
-	}
 }
 
 func WatchLive(dir string) error {
