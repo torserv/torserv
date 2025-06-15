@@ -1,4 +1,3 @@
-HEAD
 # 🛠️ TorServe
 
 **TorServe** is a hardened, zero-config static web server that automatically launches as a Tor hidden service. It allows users to anonymously publish web content with no setup, making it ideal for use in hostile or censored environments.
@@ -140,3 +139,4 @@ Indent mode
 Indent size
 Line wrap mode
 Open a GitHub issue or pull request to get involved.
+HackerHacker
