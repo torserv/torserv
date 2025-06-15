@@ -132,11 +132,3 @@ I welcome:
 - Code contributions
 - Praise or constructive criticism
 
-Indent mode
-Indent size
-Line wrap mode
-Indent mode
-Indent size
-Line wrap mode
-Open a GitHub issue or pull request to get involved.
-HackerHacker
