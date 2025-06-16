@@ -56,7 +56,7 @@ The `.onion` address for your site is generated automatically and printed in the
 ```bash
 unzip torserve-linux-amd64.zip
 cd TorServ
-./torserve
+./torserv
 ```
 
 ---
@@ -72,7 +72,7 @@ Binary Support dropped. Users may build from source if desired.
 ```bash
 unzip torserve-rpi-arm64.zip
 cd TorServ
-./torserve
+./torserv
 ```
 
 > The Tor hidden service will start and print a `.onion` address in the terminal. Use the Tor Browser to access your new hidden service. Download the browser here – [Tor Project](https://torproject.org/download/) 
