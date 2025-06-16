@@ -85,6 +85,7 @@ cd TorServ
 - 简体中文 (Simplified Chinese)
 - Español
 - Русский (Russian)
+  <span dir="ltr">فارسی (Farsi)</span>
 <span dir="ltr">- فارسی (Farsi)</span>
 
 ---
