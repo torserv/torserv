@@ -17,7 +17,7 @@ The `.onion` address for your site is generated automatically and printed in the
 - 🕵️ Privacy-first by default
 - 🛡️ Safe for use in hostile or censored environments *(use extreme caution for now)*
 - 🌐 Multilingual landing page with embedded safety guide
-- 🖥️ Cross-platform binaries: Linux, Windows, Raspberry Pi
+- 🖥️ Cross-platform binaries: Linux, Raspberry Pi
 
 ---
 
