@@ -168,12 +168,24 @@ func writeHeaders(conn net.Conn, contentLength int, contentType string) {
 }
 
 func writeNotFound(conn net.Conn) {
-	body := "<h1>404 Not Found</h1>"
-	headers := fmt.Sprintf(
-		"HTTP/1.1 404 Not Found\r\n"+
-			"Content-Type: text/html\r\n"+
-			"Content-Length: %d\r\n\r\n%s", len(body), body)
+	headers := "HTTP/1.1 200 OK\r\n" +
+		"Content-Type: application/octet-stream\r\n" +
+		"Transfer-Encoding: chunked\r\n" +
+		"Connection: keep-alive\r\n" +
+		"X-Trap: You fell for it\r\n\r\n"
 	conn.Write([]byte(headers))
+
+	for i := 0; i < 256; i++ {
+		time.Sleep(2 * time.Second)
+		chunk := fmt.Sprintf("%x\r\n%s\r\n", 5, "trash")
+		_, err := conn.Write([]byte(chunk))
+		if err != nil {
+			break
+		}
+	}
+
+	conn.Write([]byte("0\r\n\r\n"))
+	conn.Close()
 }
 
 func writeServerError(conn net.Conn) {
