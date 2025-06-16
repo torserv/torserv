@@ -162,6 +162,7 @@ func writeHeaders(conn net.Conn, contentLength int, contentType string) {
 			"X-Content-Type-Options: nosniff\r\n"+
 			"X-Frame-Options: DENY\r\n"+
 			"X-XSS-Protection: 1; mode=block\r\n"+
+			"Referrer-Policy: no-referrer\r\n"+
 			"\r\n", contentType, contentLength)
 	conn.Write([]byte(headers))
 }
