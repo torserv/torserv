@@ -63,11 +63,7 @@ cd TorServ
 
 ### 🪟 Windows
 
-```bash
-Unzip torserve-windows-amd64.zip
-cd TorServ
-Double-click torserve.exe
-```
+Binary Support dropped. Users may build from source if desired.
 
 ---
 
@@ -88,8 +84,8 @@ cd TorServ
 - English (default)
 - 简体中文 (Simplified Chinese)
 - Español
-- فارسی (Farsi)
 - Русский (Russian)
+<span dir="ltr">- فارسی (Farsi)</span>
 
 ---
 
@@ -97,7 +93,7 @@ cd TorServ
 
 This project is licensed under the [MIT License](LICENSE).
 
----
+---<span dir="ltr">فارسی (Farsi)</span>
 
 ## ❤️ Support This Project
 
