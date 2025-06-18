@@ -98,7 +98,7 @@ After cloning:
 
 ```bash
 git clone https://github.com/torserv/torserv.git
-cd torserv
+cd TorServ
 mkdir tor/
 ```
 
@@ -228,6 +228,7 @@ I welcome:
 - Praise or constructive criticism
 
 ---
+
 🧅 Tor Binary Licensing
 
 This project bundles the official Tor binary (unmodified) for convenience.
