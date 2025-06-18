@@ -1,4 +1,4 @@
-# 🛠️ TorServe
+sudo apt install tor# 🛠️ TorServe
 
 **TorServe** is a hardened, zero-config static web server that automatically launches as a Tor hidden service. It allows users to anonymously publish web content with no setup, making it ideal for use in hostile or censored environments.
 
@@ -74,10 +74,6 @@ cd TorServ
 ```
 
 > The Tor hidden service will start and print a `.onion` address in the terminal. Use the Tor Browser to access your new hidden service. Download the browser here – [Tor Project](https://torproject.org/download/) 
-
----
-
-Here’s a clean, user-friendly **“Build from Source”** section you can drop into your `README.md`, covering **Linux**, **Windows**, and **Raspberry Pi (64-bit)**.
 
 ---
 
