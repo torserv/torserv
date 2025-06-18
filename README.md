@@ -135,9 +135,3 @@ This project bundles the official Tor binary (unmodified) for convenience.
 Tor is licensed under the BSD 3-Clause License.
 
 All credit for Tor goes to the Tor Project. This project is not affiliated with or endorsed by the Tor Project.
-🧅 Tor Binary Licensing
-
-This project bundles the official Tor binary (unmodified) for convenience.
-Tor is licensed under the BSD 3-Clause License.
-
-All credit for Tor goes to the Tor Project. This project is not affiliated with or endorsed by the Tor Project.
