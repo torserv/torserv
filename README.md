@@ -92,10 +92,6 @@ TorServe is written in Go and requires Tor to be available in the `tor/` directo
 
 ---
 
-Here’s an updated version of the relevant section with a line to **install Tor** (for Linux) and use `which` to locate the binary, so users can copy it into `tor/`.
-
----
-
 ### 📁 Directory Setup
 
 After cloning:
