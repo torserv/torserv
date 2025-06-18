@@ -168,7 +168,7 @@ CGO_ENABLED=1 go build -o release/rpi/TorServ/torserve ./cmd/torserv
 ### 📂 After Building
 
 Your binary will be in `release/<platform>/TorServ/`.
-To run:
+To run copy the bin to the project root and:
 
 ```bash
 ./torserve
