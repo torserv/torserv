@@ -1,4 +1,4 @@
-🛠️ **TorServ**
+## 🛠️ **TorServ**
 
 **TorServ** is a hardened, zero-config static web server that instantly launches as a **Tor hidden service**. It enables anonymous web hosting with no setup, making it ideal for privacy-focused publishing, censorship resistance, or deployment in hostile environments.
 
