@@ -1,6 +1,6 @@
-## 🛠️ TorServe
+## 🛠️ torserv
 
-**TorServe** is a hardened, zero-config static web server that automatically launches as a Tor hidden service. It enables anonymous web publishing with no setup, making it ideal for hostile or censored environments.
+**torserv** is a hardened, zero-config static web server that automatically launches as a Tor hidden service. It enables anonymous web publishing with no setup, making it ideal for hostile or censored environments.
 
 Designed to be unzip-and-run, it includes built-in privacy protections and a multilingual landing page explaining safe usage.
 
@@ -57,9 +57,9 @@ The Tor hidden service starts automatically. The `.onion` address is printed to 
 ### 🐧 Linux (x86\_64)
 
 ```bash
-unzip torserve-linux-amd64.zip
+unzip torserv-linux-amd64.zip
 cd TorServ
-./torserve
+./torserv
 ```
 
 ---
@@ -67,9 +67,9 @@ cd TorServ
 ### 🍓 Raspberry Pi (ARM64)
 
 ```bash
-unzip torserve-rpi-arm64.zip
+unzip torserv-rpi-arm64.zip
 cd TorServ
-./torserve
+./torserv
 ```
 
 > The Tor hidden service will start and print a `.onion` address to the terminal.
@@ -86,7 +86,7 @@ You may still build from source if needed.
 
 ## 🛠️ Build from Source
 
-TorServe is written in Go and requires the Tor binary to be present in a `tor/` directory inside the project.
+torserv is written in Go and requires the Tor binary to be present in a `tor/` directory inside the project.
 
 ---
 
@@ -132,7 +132,7 @@ Download the **Tor Expert Bundle** and place `tor.exe` into `tor\`.
 #### 🐧 Linux (x86\_64 or ARM64, including Raspberry Pi)
 
 ```bash
-go build -o release/linux/TorServ/torserve ./cmd/torserv
+go build -o release/linux/TorServ/torserv ./cmd/torserv
 ```
 
 #### 🪟 Windows (Cross-compile from Linux/macOS)
@@ -141,7 +141,7 @@ go build -o release/linux/TorServ/torserve ./cmd/torserv
 sudo apt install gcc-mingw-w64
 
 GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc \
-CGO_ENABLED=1 go build -o release/windows/TorServ/torserve.exe ./cmd/torserv
+CGO_ENABLED=1 go build -o release/windows/TorServ/torserv.exe ./cmd/torserv
 ```
 
 #### 🍓 Raspberry Pi 4+ (ARM64, cross-compiled)
@@ -150,7 +150,7 @@ CGO_ENABLED=1 go build -o release/windows/TorServ/torserve.exe ./cmd/torserv
 sudo apt install gcc-aarch64-linux-gnu
 
 GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc \
-CGO_ENABLED=1 go build -o release/rpi/TorServ/torserve ./cmd/torserv
+CGO_ENABLED=1 go build -o release/rpi/TorServ/torserv ./cmd/torserv
 ```
 
 ---
@@ -163,10 +163,10 @@ Your binary will be in:
 Copy it to the project root to run:
 
 ```bash
-./torserve
+./torserv
 ```
 
-TorServe will auto-launch the Tor hidden service if `tor/` is present. If not, it will exit.
+torserv will auto-launch the Tor hidden service if `tor/` is present. If not, it will exit.
 
 ---
 
@@ -188,7 +188,7 @@ This project is licensed under the MIT License (see LICENSE.md)
 
 ## ❤️ Support This Project
 
-TorServe is and always will be **Forever Free Open Source Software (FFOSS)**.
+torserv is and always will be **Forever Free Open Source Software (FFOSS)**.
 
 If it helps you or your mission, consider buying the dev a 🍔 or 🍺:
 
@@ -219,7 +219,7 @@ Welcoming:
 
 ### 🧅 Tor Binary Licensing
 
-TorServe bundles the unmodified official `tor` binary for convenience.
+torserv bundles the unmodified official `tor` binary for convenience.
 Tor is licensed under the **BSD 3-Clause License**.
 
 This project is **not affiliated with or endorsed by the Tor Project**.
