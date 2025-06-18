@@ -102,7 +102,7 @@ TorServe is written in Go and requires the Tor binary to be present in a `tor/` 
 
 ```bash
 git clone https://github.com/torserv/torserv.git
-cd torserv
+cd TorServ
 mkdir tor/
 ```
 
