@@ -49,8 +49,6 @@ The `.onion` address for your site is generated automatically and printed in the
 
 ## 🖥️ Installation & Usage
 
----
-
 ### 🐧 Linux
 
 ```bash
@@ -76,6 +74,115 @@ cd TorServ
 ```
 
 > The Tor hidden service will start and print a `.onion` address in the terminal. Use the Tor Browser to access your new hidden service. Download the browser here – [Tor Project](https://torproject.org/download/) 
+
+---
+
+Here’s a clean, user-friendly **“Build from Source”** section you can drop into your `README.md`, covering **Linux**, **Windows**, and **Raspberry Pi (64-bit)**.
+
+---
+
+## 🛠️ Build from Source
+
+TorServe is written in Go and requires Tor to be available in the `tor/` directory. You can build for Linux, Windows, or Raspberry Pi with minimal setup.
+
+---
+
+### 📦 Requirements
+
+* Go 1.20+ (`go version`)
+* Git
+* Cross-compiler if building for another OS (e.g., `mingw-w64` for Windows)
+* `tor` binary from [torproject.org](https://www.torproject.org/download/tor/)
+
+---
+
+Here’s an updated version of the relevant section with a line to **install Tor** (for Linux) and use `which` to locate the binary, so users can copy it into `tor/`.
+
+---
+
+### 📁 Directory Setup
+
+After cloning:
+
+```bash
+git clone https://github.com/torserv/torserv.git
+cd torserv
+mkdir tor/
+```
+
+---
+
+### 🔍 Get the Tor Binary
+
+#### On Linux debian:
+
+Install Tor if you haven’t already:
+
+```bash
+sudo apt install tor
+```
+
+Then locate the binary:
+
+```bash
+which tor
+```
+
+Copy it into the `tor/` directory:
+
+```bash
+cp $(which tor) tor/
+```
+
+> On Raspberry Pi, the same commands apply if you're using a Debian-based distro.
+
+#### On Windows:
+
+Download the **Expert Bundle** from [torproject.org](https://www.torproject.org/download/tor/).
+Extract `tor.exe` into the `tor\` folder inside the project directory.
+
+---
+
+### 🖥️ Build for Linux (x86\_64)
+
+```bash
+go build -o release/linux/TorServ/torserve ./cmd/torserv
+```
+
+---
+
+### 🪟 Build for Windows (x86\_64, requires mingw-w64)
+
+> Install mingw-w64:
+> `sudo apt install gcc-mingw-w64`
+
+```bash
+GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc \
+CGO_ENABLED=1 go build -o release/windows/TorServ/torserve.exe ./cmd/torserv
+```
+---
+
+### 🍓 Build for Raspberry Pi 4+ (ARM64)
+
+> Install the ARM cross-compiler if needed:
+> `sudo apt install gcc-aarch64-linux-gnu`
+
+```bash
+GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc \
+CGO_ENABLED=1 go build -o release/rpi/TorServ/torserve ./cmd/torserv
+```
+---
+
+### 📂 After Building
+
+Your binary will be in `release/<platform>/TorServ/`.
+To run:
+
+```bash
+./torserve
+```
+
+TorServe will auto-launch the Tor hidden service if `tor/` is present or fail if not.
 
 ---
 
