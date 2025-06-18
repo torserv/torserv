@@ -42,12 +42,13 @@ The Tor hidden service starts automatically. The `.onion` address is printed to 
 
 * **Header Hardening** – Strips User-Agent, Referer, ETag, etc.
 * **Secure Defaults** – Localhost-only, no logs, no directory listing
-* **Metadata Scrubbing** – EXIF stripped; PDF upload blocked
+* **Metadata Scrubbing** – EXIF stripped from many file types
 * **Timing Jitter** – Random 50–200ms delay to mask response timing
 * **Response Padding** – Normalized sizes prevent fingerprinting
 * **No Caching** – Disables ETag, Last-Modified, public caching
 * **Bundled Assets Only** – No outbound JavaScript or network calls
-* **Multilingual Safety Guide** – React-based UI with tabbed translations
+* **Multilingual Safety Guide** – Static html with tabbed translations
+* **File/Directory Obfuscation** – Encrypted links in html hiding file names and directory structure
 
 ---
 
