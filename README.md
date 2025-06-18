@@ -4,6 +4,8 @@
 
 It’s designed to be unzip-and-run — no dependencies, no configuration. TorServ includes built-in privacy protections and a multilingual landing page to help visitors stay safe on the dark web.
 
+Follow development [@TorServ1](https://x.com/TorServ1)
+
 ---
 
 ### 🧭 Quick Start
