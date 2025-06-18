@@ -1,7 +1,3 @@
-Here’s a fully polished and professionally formatted version of your `README.md` section, with all content preserved, cleaned, and styled for high scrutiny:
-
----
-
 ## 🛠️ TorServe
 
 **TorServe** is a hardened, zero-config static web server that automatically launches as a Tor hidden service. It enables anonymous web publishing with no setup, making it ideal for hostile or censored environments.
