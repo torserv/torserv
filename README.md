@@ -93,8 +93,6 @@ cd TorServ
 
 This project is licensed under the [MIT License](LICENSE).
 
----<span dir="ltr">فارسی (Farsi)</span>
-
 ## ❤️ Support This Project
 
 TorServe is and always will be **Forever Free Open Source Software (FFOSS)**.
