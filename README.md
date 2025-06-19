@@ -203,16 +203,6 @@ This project is licensed under the MIT License (see LICENSE.md)
 
 ---
 
-## ❤️ Support This Project
-
-torserv is and always will be **Forever Free Open Source Software (FFOSS)**.
-
-If it helps you or your mission, consider buying the dev a 🍔 or 🍺:
-
-👉 [Donate via PayPal](https://paypal.me/torserv)
-
----
-
 ## 🧭 Support the Tor Project
 
 You’ll need the [Tor Browser](https://www.torproject.org/download/) to access `.onion` sites.
