@@ -12,7 +12,7 @@ It’s designed to be unzip-and-run — no dependencies, no configuration. TorSe
 
 ---
 
-💬 Join the Discussion
+## 💬 Join the Discussion
 
 Have ideas? Questions? Concerns?
 Whether you're a privacy expert or just Tor-curious, your input matters.
