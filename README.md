@@ -9,6 +9,7 @@ It’s designed to be unzip-and-run — no dependencies, no configuration. TorSe
 
 [![Stars](https://img.shields.io/github/stars/torserv/torserv?style=flat-square)](https://github.com/torserv/torserv/stargazers)
 [![Release](https://img.shields.io/github/v/release/torserv/torserv?style=flat-square)](https://github.com/torserv/torserv/releases)
+[![Sponsor](https://img.shields.io/badge/Sponsor-💜%20TorServ-blueviolet?style=for-the-badge)](https://paypal.me/torserv)
 
 ---
 
