@@ -191,7 +191,7 @@ torserv will auto-launch the Tor hidden service if `tor/` is present. If not, it
 
 * English (default)
 * 简体中文 (Simplified Chinese)
-* Español
+* Español (Spanish)
 * Русский (Russian)
 * <span dir="ltr">فارسی (Farsi)</span>
 
