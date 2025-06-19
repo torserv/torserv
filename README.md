@@ -1,11 +1,10 @@
-## 🛠️ **TorServ**
+## 🛠️ TorServ
 
-**TorServ** is a hardened, zero-config static web server that instantly launches as a **Tor hidden service**. It enables anonymous web hosting with no setup, making it ideal for privacy-focused publishing, censorship resistance, or deployment in hostile environments.
+**TorServ** is a zero-configuration static web server that instantly launches as a **Tor hidden service**, with no setup or dependencies. It’s built for **anonymous, censorship-resistant hosting** in privacy-critical or high-risk environments.
 
-It’s designed to be unzip-and-run — no dependencies, no configuration. TorServ includes built-in privacy protections and a multilingual landing page to help visitors stay safe on the dark web.
+Unzip and run — TorServ includes hardened security defaults, built-in Tor integration, and a multilingual landing page to help visitors stay safe on the dark web.
 
-📢 Follow development [@TorServ1](https://x.com/TorServ1)
-
+📢 Follow development: [@TorServ1](https://x.com/TorServ1)
 
 [![Stars](https://img.shields.io/github/stars/torserv/torserv?style=flat-square)](https://github.com/torserv/torserv/stargazers)
 [![Release](https://img.shields.io/github/v/release/torserv/torserv?style=flat-square)](https://github.com/torserv/torserv/releases)
