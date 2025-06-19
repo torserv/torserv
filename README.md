@@ -12,6 +12,15 @@ It’s designed to be unzip-and-run — no dependencies, no configuration. TorSe
 
 ---
 
+💬 Join the Discussion
+
+Have ideas? Questions? Concerns?
+Whether you're a privacy expert or just Tor-curious, your input matters.
+
+👉 Join the discussions and help steer TorServ in the right direction — no question is too small, all feedback is welcome and encouraged.
+
+---
+
 ### 🧭 Quick Start
 
 **Unzip → Execute binary → Get instant `.onion` address**
