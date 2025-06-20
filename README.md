@@ -12,7 +12,7 @@ Unzip and run — TorServ includes hardened security defaults, built-in Tor inte
 [![Sponsor](https://img.shields.io/badge/Sponsor-💜%20TorServ-blueviolet?style=for-the-badge)](https://paypal.me/torserv)
 
 <p align="center">
-  <img src="images/Screenshot.jpg" alt="TorServ Screenshot" width="700"/>
+  <img src="images/Screenshot.jpg" alt="TorServ Terminal Screenshot">
 </p>
 
 ---
