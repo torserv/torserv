@@ -227,6 +227,8 @@ Welcoming:
 * 💻 Code contributions
 * 🧠 Thoughtful feedback
 
+👉 [Join the discussions](https://github.com/torserv/torserv/discussions)
+
 ---
 
 ### 🧅 Tor Binary Licensing
