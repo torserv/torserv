@@ -144,7 +144,7 @@ cp $(which tor) tor/
 
 #### Windows
 
-Download the **Tor Expert Bundle** and place `tor.exe` into `tor\`.
+Download the [**Tor Expert Bundle**](https://www.torproject.org/download/tor/) and place `tor.exe` into `tor\`.
 
 ---
 
