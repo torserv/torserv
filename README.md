@@ -150,14 +150,14 @@ Download the [**Tor Expert Bundle**](https://www.torproject.org/download/tor/) a
 
 ### 🔧 Build Commands
 
-#### 🐧 Linux (x86\_64 or ARM64, including Raspberry Pi)
+#### 🐧 Linux (x86\_64 or ARM64, including Raspberry Pi from local terminal)
 
 ```bash
 go build -o release/linux/TorServ/torserv ./cmd/torserv
 ```
 
 #### 🪟 Windows (Cross-compile from Linux/macOS)
-
+https://www.torproject.org/download/tor/
 ```bash
 sudo apt install gcc-mingw-w64
 
