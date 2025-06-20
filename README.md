@@ -32,39 +32,40 @@ The Tor hidden service starts automatically. The `.onion` address is printed to 
 
 ## 🎯 Project Goals
 
-* 🧳 Minimal setup: unzip → run → get `.onion` URL
-* 🕳️ No clearnet exposure
-* 🕵️ Privacy-first by default
-* 🛡️ Safe for use in hostile or censored environments *(use extreme caution)*
-* 🌐 Multilingual landing page with embedded safety guide
-* 🖥️ Cross-platform binaries for Linux and Raspberry Pi
+* 🧳 **Zero-config setup:** unzip → run → receive `.onion` URL
+* 🕳️ **No clearnet exposure:** listens only on `127.0.0.1`
+* 🕵️ **Privacy-first:** no logs, no outbound traffic, no analytics
+* 🛡️ **Safe defaults for hostile environments** *(assume compromise, not safety)*
+* 🌐 **Multilingual landing page** with built-in safety guide (no JS required)
+* 💻 **Prebuilt binaries** for Linux (x64) and Raspberry Pi (ARMv7/ARM64)
 
 ---
 
 ## ✨ Key Features
 
-* ✅ Hardened static web server (Go)
-* ✅ Automatic Tor hidden service (bundled `tor`)
-* ✅ Multilingual `index.html` with usage guidance
-* ✅ Image metadata scrubbing: JPG, WebP, BMP, GIF, PNG (EXIF)
-* ✅ Optional `.onion` key rotation via `--new-key`
-* ✅ No logs, analytics, or clearnet requests
-* ✅ Binds only to `127.0.0.1`
-* ✅ Chunked transfer + response padding for fingerprinting resistance
+* ✅ **Hardened static file server** written in Go (raw TCP, no framework)
+* ✅ **Automatic Tor hidden service**, self-contained (bundled `tor`)
+* ✅ **Multilingual `index.html`** with embedded safety instructions
+* ✅ **Image metadata scrubbing** for JPEG, PNG, GIF, BMP, WebP
+* ✅ **Optional `.onion` key rotation** via `--new-key`
+* ✅ **Encrypted file paths in HTML** — no filenames or directories exposed
+* ✅ **Chunked transfer encoding + response padding** to resist fingerprinting
+* ✅ **Timing jitter (50–200ms)** masks request-response patterns
+* ✅ **No JS, no clearnet fetches, no cacheable responses**
 
 ---
 
 ## 🧠 Safety Features
 
-* **Header Hardening** – Strips User-Agent, Referer, ETag, etc.
-* **Secure Defaults** – Localhost-only, no logs, no directory listing
-* **Metadata Scrubbing** – EXIF stripped from many file types
-* **Timing Jitter** – Random 50–200ms delay to mask response timing
-* **Response Padding** – Normalized sizes prevent fingerprinting
-* **No Caching** – Disables ETag, Last-Modified, public caching
-* **Bundled Assets Only** – No outbound JavaScript or network calls
-* **Multilingual Safety Guide** – Static html with tabbed translations
-* **File/Directory Obfuscation** – Encrypted links in html hiding file names and directory structure
+* 🔐 **Header Sanitization** – Strips `Date`, `ETag`, `Last-Modified`, `User-Agent`, etc.
+* 🧱 **Localhost Binding Only** – Never exposed to public interfaces
+* 🧼 **Metadata Scrubbing** – EXIF and other metadata removed from supported image types
+* 🕒 **Timing Obfuscation** – Adds random response delay to reduce timing attacks
+* 📦 **Response Padding** – Uniform response sizes to prevent content inference
+* 🚫 **No Caching** – Disables all cache headers to avoid leak-through
+* 🧳 **Offline-Only Assets** – Fully self-contained; no JS, fonts, or network calls
+* 🌍 **Static Safety Guide** – Tabbed multilingual HTML, fully local
+* 🧊 **File/Path Obfuscation** – Encrypted file references, not human-readable
 
 ---
 
