@@ -16,14 +16,17 @@ import (
 	"github.com/fsnotify/fsnotify"
 )
 
+// headerFilter wraps an http.ResponseWriter to filter out specific headers
+// added automatically by Go before sending the response.
 type headerFilter struct {
 	http.ResponseWriter
 	headersWritten bool
 }
 
+// WriteHeader overrides the default header writing behavior to remove
+// Date, Last-Modified, ETag, and Accept-Ranges headers for privacy/security.
 func (h *headerFilter) WriteHeader(code int) {
 	if !h.headersWritten {
-		// Remove Go-added headers right before writing
 		h.Header().Del("Date")
 		h.Header().Del("Last-Modified")
 		h.Header().Del("ETag")
@@ -33,25 +36,32 @@ func (h *headerFilter) WriteHeader(code int) {
 	h.ResponseWriter.WriteHeader(code)
 }
 
+// WatchLive monitors a directory for new file creations.
+// When a new file appears, it is scrubbed automatically using scrub.ScrubFile.
 func WatchLive(dir string) error {
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		return err
 	}
 
+	// Track recently seen files to avoid duplicate processing
 	seen := make(map[string]time.Time)
 
 	go func() {
 		defer watcher.Close()
+
 		for {
 			select {
 			case ev := <-watcher.Events:
+				// On new file creation
 				if ev.Op&fsnotify.Create != 0 {
+					// Debounce repeated events on the same file
 					if t, ok := seen[ev.Name]; ok && time.Since(t) < time.Second {
 						continue
 					}
 					seen[ev.Name] = time.Now()
 
+					// Delay a bit to ensure file is fully written before scrubbing
 					go func(name string) {
 						time.Sleep(500 * time.Millisecond)
 						ext := strings.ToLower(filepath.Ext(name))
@@ -60,6 +70,7 @@ func WatchLive(dir string) error {
 						}
 					}(ev.Name)
 				}
+
 			case err := <-watcher.Errors:
 				log.Printf("Watcher error: %v", err)
 			}
@@ -69,7 +80,8 @@ func WatchLive(dir string) error {
 	return watcher.Add(dir)
 }
 
-// --- Then: Start function ---
+// Start checks if port 8080 is exposed to the clearnet.
+// If so, it prints a warning and exits; otherwise, it starts the raw HTTP server.
 func Start() error {
 	if exposed, err := isPortExternallyAccessible(8080); err != nil {
 		fmt.Println("[!] WARNING: Could not verify port exposure:", err)
@@ -87,19 +99,23 @@ func Start() error {
 	return rawhttp.Start()
 }
 
-// Wrapper to strip Go-injected headers after writing
+// headerSanitizer wraps http.ResponseWriter and removes or replaces
+// Go's default headers with more privacy-conscious and secure headers.
 type headerSanitizer struct {
 	http.ResponseWriter
 	headersWritten bool
 }
 
+// WriteHeader removes default headers and sets security headers before writing the response.
 func (hs *headerSanitizer) WriteHeader(code int) {
 	if !hs.headersWritten {
+		// Remove unwanted default headers
 		hs.Header().Del("Date")
 		hs.Header().Del("Last-Modified")
 		hs.Header().Del("ETag")
 		hs.Header().Del("Accept-Ranges")
 
+		// Set security and privacy headers
 		hs.Header().Set("Server", "")
 		hs.Header().Set("Cache-Control", "no-store")
 		hs.Header().Set("Pragma", "no-cache")
@@ -113,6 +129,8 @@ func (hs *headerSanitizer) WriteHeader(code int) {
 	hs.ResponseWriter.WriteHeader(code)
 }
 
+// isPortExternallyAccessible checks whether a specific TCP port
+// is reachable via any non-loopback network interface.
 func isPortExternallyAccessible(port int) (bool, error) {
 	interfaces, err := net.Interfaces()
 	if err != nil {
@@ -120,6 +138,7 @@ func isPortExternallyAccessible(port int) (bool, error) {
 	}
 
 	for _, iface := range interfaces {
+		// Skip loopback or down interfaces
 		if iface.Flags&net.FlagLoopback != 0 || iface.Flags&net.FlagUp == 0 {
 			continue
 		}
@@ -137,10 +156,12 @@ func isPortExternallyAccessible(port int) (bool, error) {
 			case *net.IPAddr:
 				ip = v.IP
 			}
+
 			if ip == nil || ip.IsLoopback() {
 				continue
 			}
 
+			// Try connecting to the port from the interface IP
 			conn, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", ip.String(), port), 500*time.Millisecond)
 			if err == nil {
 				conn.Close()

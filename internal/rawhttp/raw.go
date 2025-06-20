@@ -13,6 +13,8 @@ import (
 	"torserve/internal/cloak"
 )
 
+// init registers custom MIME types for specific file extensions.
+// This ensures correct Content-Type headers are set when serving these files.
 func init() {
 	mime.AddExtensionType(".js", "application/javascript")
 	mime.AddExtensionType(".css", "text/css")
@@ -24,7 +26,7 @@ func init() {
 	mime.AddExtensionType(".svg", "image/svg+xml")
 }
 
-// Start runs the raw HTTP server on port 8080
+// Start runs the raw HTTP server on port 8080 and handles incoming connections.
 func Start() error {
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
@@ -42,10 +44,12 @@ func Start() error {
 	}
 }
 
+// handleConnection processes a single HTTP request over a raw TCP connection.
 func handleConnection(conn net.Conn) {
 	defer conn.Close()
 
-	var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+	// Add jitter to response timing to avoid fingerprinting
+	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 	time.Sleep(time.Duration(50+rng.Intn(150)) * time.Millisecond)
 
 	reader := bufio.NewReader(conn)
@@ -55,22 +59,23 @@ func handleConnection(conn net.Conn) {
 		return
 	}
 
+	// Parse request method and path
 	method, path, _, ok := parseRequestLine(line)
-
 	if !ok || (method != "GET" && method != "HEAD") {
 		fmt.Println("[ERROR] Invalid method or request line")
 		writeNotFound(conn)
 		return
 	}
 
+	// Determine and decrypt requested path
 	var decrypted string
-	if path == "/" {
+	switch path {
+	case "/":
 		decrypted = "/index.html"
-	} else if path == "/favicon.ico" {
-		// Ignore the favicon.ico request by returning a 404 without decryption
-		writeNotFound(conn)
+	case "/favicon.ico":
+		writeNotFound(conn) // Skip favicon
 		return
-	} else {
+	default:
 		decrypted, err = cloak.DecryptPath(strings.TrimPrefix(path, "/"))
 		if err != nil {
 			fmt.Println("[ERROR] Failed to decrypt path:", err)
@@ -79,8 +84,8 @@ func handleConnection(conn net.Conn) {
 		}
 	}
 
+	// Normalize and validate the decrypted path
 	cleanPath := filepath.Clean(decrypted)
-
 	if strings.Contains(cleanPath, "..") {
 		fmt.Println("[ERROR] Path traversal attempt blocked")
 		writeNotFound(conn)
@@ -90,6 +95,7 @@ func handleConnection(conn net.Conn) {
 		cleanPath = "/index.html"
 	}
 
+	// Build the full file path to serve
 	baseDir, err := os.Getwd()
 	if err != nil {
 		fmt.Println("[ERROR] Failed to get working directory:", err)
@@ -98,12 +104,14 @@ func handleConnection(conn net.Conn) {
 	}
 	fullPath := filepath.Join(baseDir, "public", cleanPath)
 
+	// Prevent access outside the public directory
 	if !strings.HasPrefix(fullPath, filepath.Join(baseDir, "public")) {
 		fmt.Println("[ERROR] File outside allowed directory")
 		writeNotFound(conn)
 		return
 	}
 
+	// Read the requested file
 	data, err := os.ReadFile(fullPath)
 	if err != nil {
 		fmt.Println("[ERROR] Failed to read file:", err)
@@ -111,30 +119,36 @@ func handleConnection(conn net.Conn) {
 		return
 	}
 
+	// Determine MIME type based on file extension
 	ext := filepath.Ext(fullPath)
 	mimeType := mime.TypeByExtension(ext)
 	if mimeType == "" {
 		mimeType = "application/octet-stream"
 	}
 
+	// Pad file content to 512KB alignment
 	paddedLen := ((len(data) + 512*1024 - 1) / (512 * 1024)) * (512 * 1024)
 
+	// Serve the file with optional rewriting for HTML or CSS
 	if method == "GET" {
-		if strings.HasSuffix(fullPath, ".html") {
+		switch {
+		case strings.HasSuffix(fullPath, ".html"):
 			rewritten := cloak.RewriteHTMLLinks(string(data))
 			rewrittenBytes := []byte(rewritten)
 			paddedLen = ((len(rewrittenBytes) + 512*1024 - 1) / (512 * 1024)) * (512 * 1024)
 			writeHeaders(conn, paddedLen, mimeType)
 			conn.Write(rewrittenBytes)
 			conn.Write(make([]byte, paddedLen-len(rewrittenBytes)))
-		} else if strings.HasSuffix(fullPath, ".css") {
+
+		case strings.HasSuffix(fullPath, ".css"):
 			rewritten := cloak.RewriteCSSLinks(string(data))
 			rewrittenBytes := []byte(rewritten)
 			paddedLen = ((len(rewrittenBytes) + 512*1024 - 1) / (512 * 1024)) * (512 * 1024)
 			writeHeaders(conn, paddedLen, mimeType)
 			conn.Write(rewrittenBytes)
 			conn.Write(make([]byte, paddedLen-len(rewrittenBytes)))
-		} else {
+
+		default:
 			writeHeaders(conn, paddedLen, mimeType)
 			conn.Write(data)
 			conn.Write(make([]byte, paddedLen-len(data)))
@@ -142,6 +156,8 @@ func handleConnection(conn net.Conn) {
 	}
 }
 
+// parseRequestLine splits an HTTP request line into method, path, and version.
+// Returns ok=false if the line is malformed.
 func parseRequestLine(line string) (method, path, version string, ok bool) {
 	parts := strings.Split(strings.TrimSpace(line), " ")
 	if len(parts) < 3 {
@@ -150,6 +166,8 @@ func parseRequestLine(line string) (method, path, version string, ok bool) {
 	return parts[0], parts[1], parts[2], true
 }
 
+// writeHeaders sends HTTP 200 OK headers to the client with the specified content length and MIME type.
+// Includes standard security headers and disables caching.
 func writeHeaders(conn net.Conn, contentLength int, contentType string) {
 	headers := fmt.Sprintf(
 		"HTTP/1.0 200 OK\r\n"+
@@ -167,6 +185,8 @@ func writeHeaders(conn net.Conn, contentLength int, contentType string) {
 	conn.Write([]byte(headers))
 }
 
+// writeNotFound sends a fake 200 OK with a chunked transfer response that pretends to serve content
+// but actually returns garbage data to trap bots or probes.
 func writeNotFound(conn net.Conn) {
 	headers := "HTTP/1.1 200 OK\r\n" +
 		"Content-Type: application/octet-stream\r\n" +
@@ -184,10 +204,12 @@ func writeNotFound(conn net.Conn) {
 		}
 	}
 
+	// Indicate end of chunked transfer
 	conn.Write([]byte("0\r\n\r\n"))
 	conn.Close()
 }
 
+// writeServerError sends a simple 500 Internal Server Error page with HTML content.
 func writeServerError(conn net.Conn) {
 	body := "<h1>500 Internal Server Error</h1>"
 	headers := fmt.Sprintf(

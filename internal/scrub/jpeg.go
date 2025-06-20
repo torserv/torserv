@@ -8,28 +8,30 @@ import (
 	"os"
 )
 
+// ScrubJPEG decodes and re-encodes a JPEG file to strip all metadata.
+// The scrubbed image overwrites the original file.
 func ScrubJPEG(path string) error {
-	// Open original file
+	// Open the original JPEG file
 	f, err := os.Open(path)
 	if err != nil {
 		return err
 	}
 	defer f.Close()
 
-	// Decode JPEG image without preserving metadata
+	// Decode the image — this implicitly drops metadata
 	img, err := jpeg.Decode(f)
 	if err != nil {
 		return fmt.Errorf("failed to decode JPEG: %w", err)
 	}
 
-	// Re-encode to memory without metadata
+	// Re-encode the image into memory without metadata
 	var buf bytes.Buffer
 	err = jpeg.Encode(&buf, img, &jpeg.Options{Quality: 90})
 	if err != nil {
 		return fmt.Errorf("failed to encode JPEG: %w", err)
 	}
 
-	// Overwrite original file
+	// Write scrubbed image to a temporary file
 	tmpPath := path + ".scrubbed"
 	tmp, err := os.Create(tmpPath)
 	if err != nil {
@@ -41,7 +43,7 @@ func ScrubJPEG(path string) error {
 		return fmt.Errorf("failed to write scrubbed JPEG: %w", err)
 	}
 
-	// Replace original
+	// Replace the original file with the scrubbed version
 	if err := os.Rename(tmpPath, path); err != nil {
 		return fmt.Errorf("failed to replace original: %w", err)
 	}

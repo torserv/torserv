@@ -7,29 +7,42 @@ import (
 	"strings"
 )
 
+// List of supported image extensions for scrubbing
 var supported = []string{".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"}
-var unsafe = []string{".doc", ".docx", ".pptx", ".xls", ".xlsx", ".odt", ".mp4", ".mp3", ".mkv", ".mov", ".pdf"}
 
+// List of known unsafe file types to reject
+var unsafe = []string{
+	".doc", ".docx", ".pptx", ".xls", ".xlsx", ".odt",
+	".mp4", ".mp3", ".mkv", ".mov", ".pdf",
+}
+
+// Init walks the "public" directory, scrubs supported image files,
+// and errors out if any unsafe files are detected.
 func Init() error {
 	return filepath.Walk("public", func(path string, info os.FileInfo, err error) error {
 		if err != nil || info.IsDir() {
-			return nil
+			return nil // Skip unreadable paths or directories
 		}
 
 		ext := strings.ToLower(filepath.Ext(path))
+
 		switch {
 		case contains(unsafe, ext):
 			fmt.Printf("[!] UNSAFE FILE: %s — unsupported type\n", path)
 			return fmt.Errorf("unsafe file found: %s", path)
+
 		case contains(supported, ext):
 			fmt.Printf("[*] Scrubbing: %s\n", path)
 			return ScrubFile(path, ext)
+
 		default:
+			// Skip files with unknown extensions
 			return nil
 		}
 	})
 }
 
+// contains checks if the given target extension exists in the provided list.
 func contains(list []string, target string) bool {
 	for _, ext := range list {
 		if ext == target {
@@ -39,6 +52,7 @@ func contains(list []string, target string) bool {
 	return false
 }
 
+// ScrubFile dispatches the appropriate scrubber function based on file extension.
 func ScrubFile(path, ext string) error {
 	switch ext {
 	case ".jpg", ".jpeg":
@@ -52,6 +66,7 @@ func ScrubFile(path, ext string) error {
 	case ".webp":
 		return ScrubWEBP(path)
 	default:
+		// Unsupported extensions are ignored
 		return nil
 	}
 }
