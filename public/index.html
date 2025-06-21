@@ -135,248 +135,257 @@
     </div>
 
   <div id="en" class="article active">
-  <h2>🔐 Welcome to TorServe</h2>
-  <p>
-      TorServe is a zero-config, hardened, static web server that launches automatically as a Tor hidden service.
-      It is built for anonymous publishing, especially in censored or high-risk environments.
-  </p>
+    <h2>🔐 Welcome to TorServe</h2>
+    <p>
+      <strong>TorServe</strong> is a zero-config, hardened static web server that launches instantly as a Tor hidden service.
+      It’s built for anonymous publishing, especially in censored or high-risk environments.
+    </p>
 
-  <h3>Unzip → Start Server → Working Hidden Service In Seconds</h3>
-  <p>
-      All this in seconds, no setup headaches, or the risks using insecure web server software.<br>
-      Binary package available for Linux, Windows, Raspberry Pi
-  </p>
+    <h3>🚀 Unzip → Start Server → Get a Hidden Service</h3>
+    <p>
+      TorServe runs in seconds, with no configuration required. Just unzip and run. No need for NGINX, Apache, or system-wide Tor installations.<br>
+      Prebuilt binaries available for Linux and Raspberry Pi. Windows build is discontinued due to antivirus false positives.
+    </p>
 
-  <h3>⚠️ Notice: Early Development</h3>
-  <p>
-      This project is young and actively evolving. Although many security precautions are in place,
-      treat TorServe as experimental software. Do not rely on it alone for high-risk operations.
-      Use with extreme caution in hostile environments.
-  </p>
+    <h3>⚠️ Project Status: Early Development</h3>
+    <p>
+      This is experimental software. Many safeguards are in place, but it should <strong>not be relied upon alone</strong> in hostile or oppressive environments.
+      Assume it has bugs. Use with caution. Your personal OPSEC matters just as much as the server’s hardening.
+    </p>
 
-  <h3>🛡️ Core Safety Features</h3>
-  <ul>
-      <li>Tor-only access - no clearnet exposure at all</li>
-      <li>Local-only bind (127.0.0.1)</li>
-      <li>No logging (access, error, request)</li>
-      <li>No analytics or telemetry</li>
-      <li>EXIF metadata scrubbing on startup and dynamically if it is running</li>
-      <li>Header stripping - removes User-Agent, Referer, ETag, etc.</li>
-      <li>Randomized response timing (50–200ms jitter)</li>
-      <li>Key rotation with command line arg --new-key</li>
-      <li>Response padding to normalize transfer sizes</li>
-      <li>Obfuscated URLs and file path structures</li>
-      <li>No directory indexing or auto-listing</li>
-      <li>Server refuses to run if unsafe file types are present in public/ directory</li>
-      <li>Dynamic file checking - won’t serve unsafe file types even if added while running</li>
-  </ul>
+    <h3>🛡️ Core Safety Features</h3>
+    <ul>
+      <li>Tor-only access — no clearnet exposure</li>
+      <li>127.0.0.1-only binding — not visible on LAN or WAN</li>
+      <li>No logs of any kind — access, error, or request</li>
+      <li>No analytics or external network calls</li>
+      <li>EXIF and metadata scrubbing (on boot and runtime)</li>
+      <li>Header sanitization — strips Referer, User-Agent, Date, etc.</li>
+      <li>Randomized timing (50–200ms) to mask traffic patterns</li>
+      <li>Key rotation supported with <code>--new-key</code> flag</li>
+      <li>Uniform response padding to hide file sizes</li>
+      <li>Obfuscated, encrypted file paths in HTML</li>
+      <li>No auto-indexing or directory listing</li>
+      <li>Unsafe file types are blocked before and during runtime</li>
+      <li>Fails to start if dangerous files exist in <code>public/</code></li>
+    </ul>
 
-  <h3>🧭 How to Use Safely</h3>
-  <ol>
-      <li>Use only over Tor Browser. Never access from a regular browser.</li>
-      <li>Scrub your content of metadata before uploading — even though TorServe removes most metadata, it's safest to sanitize everything yourself.</li>
-      <li>Avoid personal info in file names, folder names, file content and images.</li>
-      <li>Do not reveal server structure - links and directories are not indexed or guessable by default.</li>
-      <li>Use on isolated machines (Tails, Qubes, or virtual machines preferred).</li>
-      <li>Monitor your network to ensure the server is only reachable via .onion.</li>
-      <li>Keep updated - follow project updates for patches and new features.</li>
-  </ol>
+    <h3>🧭 How to Use TorServe Safely</h3>
+    <ol>
+      <li>Access only via <strong>Tor Browser</strong>. Never use a standard browser.</li>
+      <li><strong>Scrub your files</strong> of all metadata before uploading — even though TorServe auto-sanitizes, defense-in-depth is best.</li>
+      <li><strong>Avoid personal information</strong> in filenames, folder names, file content, or embedded images.</li>
+      <li>Do not share links on clearnet platforms (social media, email, Discord, etc.).</li>
+      <li>Use in isolated or disposable environments (e.g., Tails, Qubes, VMs).</li>
+      <li>Verify your server is reachable <strong>only over Tor</strong>.</li>
+      <li>Monitor project updates for security patches or hardening changes.</li>
+    </ol>
+
+    <p><strong>Remember:</strong> Tor can anonymize your server — but not your mistakes. Stay disciplined. Stay private.</p>
   </div>
 
   <div id="zh" class="article">
-  <h2>🔐 欢迎使用 TorServ</h2>
-  <p>
-      TorServ 是一个零配置、加固的静态网页服务器，可自动启动为 Tor 隐藏服务。
-      它专为匿名发布而构建，尤其适用于受审查或高风险的环境。
-  </p>
+    <h2>🔐 欢迎使用 TorServ</h2>
+    <p>
+      <strong>TorServ</strong> 是一个零配置、加固的静态网页服务器，启动后会立即创建一个 Tor 隐藏服务。
+      它专为匿名发布而设计，尤其适用于审查严格或高风险的环境。
+    </p>
 
-  <h3>解压 → 启动服务器 → 几秒内运行的隐藏服务</h3>
-  <p>
-      几秒钟内即可完成，无需配置麻烦，也无使用不安全服务器软件的风险。<br>
-      提供适用于 Linux、Windows、树莓派 的二进制包
-  </p>
+    <h3>🚀 解压 → 启动服务器 → 获取隐藏服务地址</h3>
+    <p>
+      无需配置，无需依赖，解压后立即运行，无需 NGINX、Apache 或系统级 Tor 安装。<br>
+      提供适用于 Linux 和树莓派的预编译二进制包。<br>
+      ⚠️ Windows 版本已取消，因杀毒软件误报问题严重。
+    </p>
 
-  <h3>⚠️ 注意：仍处于早期开发阶段</h3>
-  <p>
-      本项目仍在积极开发中，尽管已实现多项安全机制，但请将 TorServ 视为实验性软件。
-      不要在高风险任务中单独依赖此工具。在敌对环境中使用时，请务必小心谨慎。
-  </p>
+    <h3>⚠️ 项目状态：早期开发阶段</h3>
+    <p>
+      本项目仍处于开发初期。尽管已采取多项安全防护措施，但请不要在敌对或高风险环境中单独依赖 TorServ。
+      假设它仍可能存在漏洞。谨慎使用。你自己的操作安全（OPSEC）同样关键。
+    </p>
 
-  <h3>🛡️ 核心安全特性</h3>
-  <ul>
-      <li>仅支持 Tor 访问 - 完全无明网暴露</li>
-      <li>仅绑定本地地址（127.0.0.1）</li>
-      <li>无任何日志记录（访问、错误、请求）</li>
-      <li>无分析或遥测行为</li>
-      <li>启动时和运行中自动清除 EXIF 元数据</li>
-      <li>移除请求头信息 - User-Agent、Referer、ETag 等</li>
-      <li>响应时间随机延迟（50–200 毫秒）</li>
-      <li>命令行参数 --new-key 支持密钥轮换</li>
-      <li>响应填充 — 正规化传输大小</li>
-      <li>混淆链接和文件路径结构</li>
-      <li>禁止目录索引和自动列目录</li>
-      <li>如果 public/ 目录中存在不安全文件类型，服务器将拒绝运行</li>
-      <li>动态文件检查 - 即使运行中添加了不安全文件也不会提供服务</li>
-  </ul>
+    <h3>🛡️ 核心安全特性</h3>
+    <ul>
+      <li>仅限 Tor 网络访问 — 完全不暴露于明网</li>
+      <li>仅绑定至 127.0.0.1 — 不对外开放</li>
+      <li>无任何日志记录 — 访问、错误或请求</li>
+      <li>无任何外部网络请求或分析行为</li>
+      <li>在启动时及运行时清除 EXIF 和元数据</li>
+      <li>请求头清除 — 移除 Referer、User-Agent、Date 等字段</li>
+      <li>响应时间引入 50–200 毫秒随机延迟</li>
+      <li>支持通过 <code>--new-key</code> 命令切换隐藏服务密钥</li>
+      <li>统一响应填充 — 隐藏实际文件大小</li>
+      <li>HTML 中的文件路径使用加密方式混淆</li>
+      <li>默认禁用目录索引与自动列表</li>
+      <li>检测并阻止不安全文件类型（运行前和运行中）</li>
+      <li>若 <code>public/</code> 目录中存在危险文件类型，将拒绝启动</li>
+    </ul>
 
-  <h3>🧭 安全使用指南</h3>
-  <ol>
-      <li>仅通过 Tor 浏览器访问，<strong>绝不能</strong>使用普通浏览器访问</li>
-      <li>上传前请手动清除文件的元数据，虽然 TorServ 会清除大部分信息，但自己处理最为安全</li>
-      <li>文件名、文件夹名、文件内容和图像中避免包含任何个人信息</li>
-      <li>不要暴露服务器结构 - 链接和目录默认不会被索引或猜出</li>
-      <li>优先在隔离环境中使用（推荐 Tails、Qubes 或虚拟机）</li>
-      <li>监控你的网络，确保服务器仅通过 .onion 地址可访问</li>
-      <li>保持更新 - 关注项目进展，及时获取安全补丁和新功能</li>
-  </ol>
+    <h3>🧭 安全使用指南</h3>
+    <ol>
+      <li>仅使用 <strong>Tor 浏览器</strong> 访问本服务，切勿使用普通浏览器</li>
+      <li>在上传前手动清除所有元数据 — 虽然 TorServ 会自动处理，但建议使用双重防护</li>
+      <li>文件名、目录名、文件内容和图像中不要包含任何个人信息</li>
+      <li>不要在明网平台（如社交媒体、电邮、论坛）分享链接</li>
+      <li>建议在隔离或一次性环境中运行（推荐使用 Tails、Qubes、虚拟机等）</li>
+      <li>确保服务器仅通过 .onion 地址访问 — 可用网络监控工具确认</li>
+      <li>关注项目更新，获取最新安全补丁和功能改进</li>
+    </ol>
+
+    <p><strong>请记住：</strong> Tor 可以匿名化你的服务器，但无法弥补你的使用失误。保持谨慎，才能保有隐私。</p>
   </div>
 
   <div id="es" class="article">
-  <h2>🔐 Bienvenido a TorServ</h2>
-  <p>
-      <strong>TorServ</strong> es un servidor web estático, endurecido y sin configuración previa que se inicia automáticamente como un servicio oculto de Tor.
+    <h2>🔐 Bienvenido a TorServ</h2>
+    <p>
+      <strong>TorServ</strong> es un servidor web estático, endurecido y sin configuración previa, que se lanza automáticamente como un servicio oculto de Tor.
       Está diseñado para la publicación anónima, especialmente en entornos censurados o de alto riesgo.
-  </p>
+    </p>
 
-  <h3>Descomprimir → Iniciar servidor → Servicio oculto funcional en segundos</h3>
-  <p>
-      Todo esto en segundos, sin complicaciones de configuración ni los riesgos de usar software de servidor web inseguro.<br>
-      Paquete binario disponible para Linux, Windows, Raspberry Pi
-  </p>
+    <h3>🚀 Descomprimir → Iniciar servidor → Obtener dirección .onion</h3>
+    <p>
+      Ejecuta en segundos, sin necesidad de configuración. Solo descomprime y ejecuta. No requiere NGINX, Apache ni instalaciones de Tor a nivel de sistema.<br>
+      Binarios precompilados disponibles para Linux y Raspberry Pi.<br>
+      ⚠️ La versión para Windows fue eliminada debido a falsos positivos de antivirus.
+    </p>
 
-  <h3>⚠️ Aviso: Desarrollo Temprano</h3>
-  <p>
-      Este proyecto es joven y está en constante evolución. Aunque ya incorpora varias medidas de seguridad,
-      considera TorServ como software experimental. No confíes exclusivamente en él para operaciones de alto riesgo.
-      Úsalo con extrema precaución en entornos hostiles.
-  </p>
+    <h3>⚠️ Estado del proyecto: Desarrollo temprano</h3>
+    <p>
+      Este es un software experimental. Aunque incluye múltiples medidas de protección, <strong>no debe usarse como única defensa</strong> en entornos hostiles u opresivos.
+      Asume que pueden existir errores. Úsalo con precaución. Tu propia seguridad operacional (OPSEC) es igual de importante que la del servidor.
+    </p>
 
-  <h3>🛡️ Funciones de Seguridad Principales</h3>
-  <ul>
-      <li>Acceso exclusivo por Tor - sin exposición a la red abierta</li>
-      <li>Solo escucha en localhost (127.0.0.1)</li>
-      <li>Sin registros (acceso, errores o solicitudes)</li>
-      <li>Sin analítica ni telemetría</li>
+    <h3>🛡️ Funciones principales de seguridad</h3>
+    <ul>
+      <li>Acceso exclusivo por Tor — sin exposición a la red abierta</li>
+      <li>Escucha solo en 127.0.0.1 — no visible en LAN o WAN</li>
+      <li>Sin registros de ningún tipo — acceso, errores ni solicitudes</li>
+      <li>Sin telemetría ni llamadas externas a la red</li>
       <li>Eliminación de metadatos EXIF al iniciar y durante la ejecución</li>
-      <li>Eliminación de cabeceras - User-Agent, Referer, ETag, etc.</li>
-      <li>Retardo de respuesta aleatorio (50–200 ms)</li>
-      <li>Rotación de claves con el argumento --new-key</li>
-      <li>Relleno de respuestas para normalizar tamaños de transferencia</li>
-      <li>Enlaces y rutas de archivos ofuscados</li>
-      <li>Sin indexación ni listado automático de directorios</li>
-      <li>El servidor se niega a iniciar si hay archivos inseguros en el directorio public/</li>
-      <li>Verificación dinámica - el servidor no sirve archivos inseguros aunque se añadan en tiempo de ejecución</li>
-  </ul>
+      <li>Sanitización de cabeceras — elimina Referer, User-Agent, Date, etc.</li>
+      <li>Retardo aleatorio (50–200 ms) para enmascarar patrones de tráfico</li>
+      <li>Soporta rotación de claves con el argumento <code>--new-key</code></li>
+      <li>Relleno de respuestas para ocultar tamaños reales</li>
+      <li>Enlaces cifrados y rutas de archivos ofuscadas en el HTML</li>
+      <li>Sin indexación automática de directorios</li>
+      <li>Bloquea archivos peligrosos antes y durante la ejecución</li>
+      <li>Se niega a iniciar si detecta archivos no seguros en <code>public/</code></li>
+    </ul>
 
-  <h3>🧭 Cómo Usarlo de Forma Segura</h3>
-  <ol>
-      <li>Usa solo a través del Navegador Tor. <strong>Nunca accedas con un navegador normal.</strong></li>
-      <li>Elimina los metadatos de tu contenido antes de subirlo — aunque TorServ borra la mayoría, lo más seguro es hacerlo tú mismo.</li>
-      <li>Evita incluir información personal en nombres de archivos, carpetas, contenido o imágenes.</li>
-      <li>No reveles la estructura del servidor - los enlaces y directorios no se indexan ni son adivinables por defecto.</li>
-      <li>Úsalo en sistemas aislados (se recomienda Tails, Qubes o máquinas virtuales).</li>
-      <li>Supervisa tu red para asegurarte de que el servidor solo sea accesible por .onion</li>
-      <li>Mantente actualizado - sigue el proyecto para recibir parches y nuevas funciones.</li>
-  </ol>
+    <h3>🧭 Cómo usar TorServ de forma segura</h3>
+    <ol>
+      <li>Accede únicamente desde el <strong>Navegador Tor</strong>. Nunca uses navegadores comunes.</li>
+      <li><strong>Elimina los metadatos</strong> de tus archivos antes de subirlos — aunque TorServ los limpia automáticamente, la protección doble es mejor.</li>
+      <li>Evita cualquier información personal en nombres de archivos, carpetas, contenido o imágenes.</li>
+      <li>No compartas enlaces en plataformas de red abierta (correo, redes sociales, foros, etc.).</li>
+      <li>Úsalo en entornos aislados o desechables (como Tails, Qubes o máquinas virtuales).</li>
+      <li>Verifica que el servidor solo sea accesible a través de la red Tor (.onion).</li>
+      <li>Sigue el desarrollo del proyecto para recibir actualizaciones y parches de seguridad.</li>
+    </ol>
+
+    <p><strong>Recuerda:</strong> Tor puede anonimizar tu servidor, pero no tus errores. Sé disciplinado. Protege tu privacidad.</p>
   </div>
 
   <div id="fa" class="article" dir="rtl" style="text-align: right;">
-  <h2>🔐 خوش آمدید به TorServ</h2>
-  <p>
-      <strong>TorServ</strong> یک سرور وب ایستا، مقاوم‌سازی‌شده و بدون نیاز به پیکربندی است که به‌طور خودکار به‌عنوان یک سرویس مخفی Tor اجرا می‌شود.
-      این ابزار برای انتشار ناشناس طراحی شده است، به‌ویژه در محیط‌های سانسورشده یا پرخطر.
-  </p>
+    <h2>🔐 خوش آمدید به TorServ</h2>
+    <p>
+      <strong>TorServ</strong> یک سرور وب ایستا، مقاوم‌سازی‌شده و بدون نیاز به پیکربندی است که بلافاصله به عنوان یک سرویس مخفی در شبکه Tor راه‌اندازی می‌شود.
+      این ابزار برای انتشار ناشناس طراحی شده است، به‌ویژه در محیط‌های سانسور‌شده یا پرخطر.
+    </p>
 
-  <h3>از حالت فشرده خارج کن → سرور را اجرا کن → سرویس مخفی فعال در چند ثانیه</h3>
-  <p>
-      همه این‌ها فقط در چند ثانیه، بدون دردسرهای پیکربندی یا ریسک‌های استفاده از نرم‌افزارهای ناامن سرور وب.<br>
-      نسخه باینری برای لینوکس، ویندوز و رزبری‌پای در دسترس است
-  </p>
+    <h3>🚀 از حالت فشرده خارج کن → سرور را اجرا کن → دریافت آدرس .onion</h3>
+    <p>
+      بدون نیاز به تنظیمات اضافی. فقط از حالت فشرده خارج کنید و اجرا نمایید. نیازی به NGINX، Apache یا نصب Tor در سطح سیستم نیست.<br>
+      نسخه‌های باینری برای لینوکس و رزبری‌پای در دسترس هستند.<br>
+      ⚠️ نسخه ویندوز به دلیل شناسایی نادرست توسط آنتی‌ویروس‌ها حذف شده است.
+    </p>
 
-  <h3>⚠️ توجه: در حال توسعه اولیه</h3>
-  <p>
-      این پروژه هنوز نوپا و در حال تکامل مداوم است. با اینکه بسیاری از اقدامات امنیتی پیاده‌سازی شده‌اند،
-      TorServ را نرم‌افزاری آزمایشی در نظر بگیرید. در عملیات‌های پرخطر، تنها به آن اتکا نکنید.
-      در محیط‌های خصمانه با <strong>بالاترین احتیاط</strong> از آن استفاده نمایید.
-  </p>
+    <h3>⚠️ وضعیت پروژه: در حال توسعه اولیه</h3>
+    <p>
+      این نرم‌افزار در حال حاضر آزمایشی است. اگرچه اقدامات امنیتی فراوانی پیاده‌سازی شده، <strong>نباید تنها ابزار شما در محیط‌های پرخطر باشد</strong>.
+      فرض را بر وجود نقص‌های احتمالی بگذارید. با احتیاط استفاده کنید. رعایت اصول امنیت عملیاتی (OPSEC) توسط شما به اندازه سخت‌افزار و نرم‌افزار اهمیت دارد.
+    </p>
 
-  <h3>🛡️ ویژگی‌های اصلی امنیتی</h3>
-  <ul>
-      <li>دسترسی فقط از طریق Tor - هیچگونه تماس با clearnet</li>
-      <li>محدود به اتصال محلی (127.0.0.1)</li>
-      <li>بدون لاگ‌برداری (ورود، خطا، درخواست)</li>
-      <li>بدون تحلیل‌گر یا تله‌متری</li>
-      <li>حذف فراداده‌های EXIF هنگام اجرا و به‌صورت پویا</li>
-      <li>حذف هدرهای HTTP - مانند User-Agent، Referer، ETag و ...</li>
-      <li>تأخیر تصادفی در پاسخ‌ها (۵۰ تا ۲۰۰ میلی‌ثانیه)</li>
-      <li>چرخش کلید با آرگومان خط فرمان --new-key</li>
-      <li>پدینگ پاسخ برای یکسان‌سازی حجم انتقال</li>
-      <li>آدرس‌ها و مسیرهای فایل به صورت مخفی و پیچیده</li>
-      <li>عدم فهرست‌بندی یا لیست خودکار دایرکتوری‌ها</li>
-      <li>در صورت وجود فایل ناامن در پوشهٔ public/، سرور اجرا نخواهد شد</li>
-      <li>بررسی پویا - حتی در حال اجرا نیز فایل‌های ناامن ارائه نمی‌شوند</li>
-  </ul>
+    <h3>🛡️ ویژگی‌های اصلی امنیتی</h3>
+    <ul>
+      <li>فقط دسترسی از طریق Tor — بدون هیچ‌گونه اتصال به clearnet</li>
+      <li>اتصال فقط به 127.0.0.1 — مخفی از شبکه محلی و اینترنت</li>
+      <li>بدون ثبت هیچ نوع لاگ — نه دسترسی، نه خطا، نه درخواست</li>
+      <li>بدون تماس با شبکه خارجی یا تله‌متری</li>
+      <li>حذف فراداده‌های EXIF در زمان راه‌اندازی و به‌صورت پویا</li>
+      <li>پاک‌سازی سربرگ‌ها — حذف User-Agent، Referer، Date و دیگر اطلاعات</li>
+      <li>افزودن تأخیر تصادفی (۵۰ تا ۲۰۰ میلی‌ثانیه) برای مخفی‌سازی الگوهای ترافیکی</li>
+      <li>پشتیبانی از چرخش کلید با آرگومان <code>--new-key</code></li>
+      <li>افزودن پدینگ به پاسخ‌ها برای مخفی کردن حجم واقعی داده</li>
+      <li>مسیرهای فایل در HTML رمزنگاری و مخفی شده‌اند</li>
+      <li>فهرست‌سازی خودکار دایرکتوری‌ها غیرفعال است</li>
+      <li>تشخیص و مسدودسازی فایل‌های ناامن در زمان اجرا و قبل از آن</li>
+      <li>در صورتی که فایل خطرناکی در <code>public/</code> باشد، سرور راه‌اندازی نخواهد شد</li>
+    </ul>
 
-  <h3>🧭 راهنمای استفاده ایمن</h3>
-  <ol>
-      <li>فقط از طریق مرورگر Tor استفاده کنید. <strong>هرگز</strong> از مرورگر معمولی استفاده نکنید.</li>
-      <li>قبل از بارگذاری، فراداده‌های محتوای خود را حذف کنید — اگرچه TorServ اغلب اطلاعات را حذف می‌کند، ولی بهترین کار پاک‌سازی دستی است.</li>
-      <li>از قرار دادن اطلاعات شخصی در نام فایل، نام پوشه، محتوای فایل و تصاویر خودداری کنید.</li>
-      <li>ساختار سرور را فاش نکنید - لینک‌ها و مسیرها به‌طور پیش‌فرض فهرست نمی‌شوند و قابل حدس نیستند.</li>
-      <li>از سیستم‌های ایزوله استفاده کنید (مانند Tails، Qubes یا ماشین‌های مجازی).</li>
-      <li>بر شبکه خود نظارت داشته باشید تا مطمئن شوید فقط از طریق آدرس .onion قابل دسترسی است.</li>
-      <li>به‌روز بمانید - برای دریافت اصلاحات امنیتی و قابلیت‌های جدید، پروژه را دنبال کنید.</li>
-  </ol>
+    <h3>🧭 راهنمای استفاده ایمن از TorServ</h3>
+    <ol>
+      <li>فقط از <strong>مرورگر Tor</strong> استفاده کنید. هرگز از مرورگرهای معمولی استفاده نکنید.</li>
+      <li><strong>فراداده فایل‌های خود را پاک کنید</strong> پیش از بارگذاری — اگرچه TorServ اغلب آن‌ها را حذف می‌کند، پاک‌سازی دستی امن‌تر است.</li>
+      <li>از درج اطلاعات شخصی در نام فایل، مسیر، محتوای فایل یا تصاویر خودداری کنید.</li>
+      <li>لینک‌ها را در پلتفرم‌های clearnet (شبکه‌های اجتماعی، ایمیل، فروم‌ها) منتشر نکنید.</li>
+      <li>در محیط‌های ایزوله یا یک‌بارمصرف اجرا کنید (مانند Tails، Qubes یا ماشین مجازی).</li>
+      <li>مطمئن شوید که فقط از طریق آدرس .onion قابل دسترسی است — با نظارت شبکه این را بررسی کنید.</li>
+      <li>پروژه را دنبال کنید تا از وصله‌های امنیتی و به‌روزرسانی‌های جدید مطلع شوید.</li>
+    </ol>
+
+    <p><strong>به یاد داشته باشید:</strong> Tor می‌تواند سرور شما را ناشناس کند — اما اشتباهات شما را نه. محتاط باشید. از حریم خصوصی خود محافظت کنید.</p>
   </div>
 
   <div id="ru" class="article">
-  <h2>🔐 Добро пожаловать в TorServ</h2>
-  <p>
+    <h2>🔐 Добро пожаловать в TorServ</h2>
+    <p>
       <strong>TorServ</strong> — это статический веб-сервер с усиленной безопасностью и нулевой настройкой, который автоматически запускается как скрытый сервис Tor.
-      Он создан для анонимной публикации, особенно в условиях цензуры или высокого риска.
-  </p>
+      Разработан для анонимной публикации, особенно в условиях цензуры или высокого риска.
+    </p>
 
-  <h3>Распакуй → Запусти сервер → Готовый скрытый сервис за считанные секунды</h3>
-  <p>
-      Всё это за секунды — без сложной настройки и рисков использования небезопасного серверного ПО.<br>
-      Бинарные пакеты доступны для Linux, Windows и Raspberry Pi
-  </p>
+    <h3>🚀 Распакуйте → Запустите сервер → Получите адрес .onion</h3>
+    <p>
+      Работает за считанные секунды — без настройки, зависимостей или внешнего Tor. Просто распакуйте и запустите.<br>
+      Предварительно собранные бинарные файлы доступны для Linux и Raspberry Pi.<br>
+      ⚠️ Поддержка Windows прекращена из-за ложных срабатываний антивирусов.
+    </p>
 
-  <h3>⚠️ Внимание: Ранняя стадия разработки</h3>
-  <p>
-      Проект находится на ранней стадии и активно развивается. Несмотря на реализованные меры безопасности,
-      рассматривайте TorServ как экспериментальное программное обеспечение.
-      Не полагайтесь на него в одиночку при выполнении задач с высоким уровнем риска.
-      Используйте с крайней осторожностью в враждебных условиях.
-  </p>
+    <h3>⚠️ Статус проекта: ранняя стадия разработки</h3>
+    <p>
+      Это экспериментальное программное обеспечение. Несмотря на внедрённые меры безопасности, <strong>не следует полагаться только на него</strong> в условиях репрессий или угроз.
+      Предполагается наличие потенциальных уязвимостей. Используйте с осторожностью. Ваша собственная операционная безопасность (OPSEC) так же важна, как и защита сервера.
+    </p>
 
-  <h3>🛡️ Основные функции безопасности</h3>
-  <ul>
-      <li>Только доступ через Tor — полностью без выхода в clearnet</li>
-      <li>Привязка только к локальному адресу (127.0.0.1)</li>
-      <li>Отсутствие логирования (доступ, ошибки, запросы)</li>
-      <li>Без аналитики и телеметрии</li>
-      <li>Удаление метаданных EXIF при запуске и во время работы</li>
-      <li>Удаление заголовков — User-Agent, Referer, ETag и др.</li>
-      <li>Случайная задержка ответа (от 50 до 200 мс)</li>
-      <li>Ротация ключей с аргументом командной строки --new-key</li>
-      <li>Выравнивание размера ответов (padding)</li>
-      <li>Запутывание URL и структуры путей файлов</li>
-      <li>Без индексации и автосписков каталогов</li>
-      <li>Сервер не запустится при наличии небезопасных типов файлов в директории public/</li>
-      <li>Динамическая проверка — небезопасные файлы не обслуживаются даже при добавлении во время работы</li>
-  </ul>
+    <h3>🛡️ Основные функции безопасности</h3>
+    <ul>
+      <li>Доступ только через Tor — без выхода в clearnet</li>
+      <li>Привязка только к 127.0.0.1 — недоступен по локальной или внешней сети</li>
+      <li>Полное отсутствие логов — доступ, ошибки, запросы</li>
+      <li>Нет телеметрии или внешних сетевых вызовов</li>
+      <li>Удаление EXIF-метаданных при запуске и во время работы</li>
+      <li>Очистка HTTP-заголовков — Referer, User-Agent, Date и др.</li>
+      <li>Случайные задержки (50–200 мс) для сокрытия сетевых шаблонов</li>
+      <li>Поддержка ротации ключей с флагом <code>--new-key</code></li>
+      <li>Выравнивание размера ответов для сокрытия объёмов</li>
+      <li>Шифрованные и запутанные пути файлов в HTML</li>
+      <li>Отключена автоиндексация и листинг каталогов</li>
+      <li>Проверка и блокировка небезопасных файлов до и во время запуска</li>
+      <li>Отказ от запуска, если в <code>public/</code> найдены опасные файлы</li>
+    </ul>
 
-  <h3>🧭 Как безопасно использовать</h3>
-  <ol>
-      <li>Используйте только через браузер Tor. <strong>Никогда</strong> не открывайте в обычном браузере.</li>
-      <li>Удаляйте метаданные из контента перед загрузкой — хотя TorServ удаляет большинство, лучше очистить всё вручную.</li>
-      <li>Избегайте личной информации в именах файлов, папок, содержимом и изображениях.</li>
-      <li>Не раскрывайте структуру сервера — ссылки и каталоги по умолчанию не индексируются и не угадываются.</li>
-      <li>Используйте на изолированных машинах (рекомендуются Tails, Qubes или виртуальные машины).</li>
-      <li>Следите за своей сетью, чтобы убедиться, что сервер доступен только по адресу .onion</li>
-      <li>Обновляйтесь — следите за проектом, чтобы получать исправления и новые функции.</li>
-  </ol>
+    <h3>🧭 Как безопасно использовать TorServ</h3>
+    <ol>
+      <li>Используйте <strong>только Tor Browser</strong>. Никогда не открывайте через обычный браузер.</li>
+      <li><strong>Удаляйте метаданные</strong> из файлов вручную до загрузки — хотя TorServ очищает большинство данных, лучше продублировать защиту.</li>
+      <li>Не включайте личные данные в имена файлов, папок, содержимое или изображения.</li>
+      <li>Не публикуйте ссылки на открытых платформах (соцсети, почта, форумы и т.п.).</li>
+      <li>Запускайте в изолированной среде (например, Tails, Qubes или виртуальной машине).</li>
+      <li>Проверьте, что доступ возможен <strong>только через .onion</strong> — используйте мониторинг сети.</li>
+      <li>Следите за обновлениями проекта, чтобы получать исправления и улучшения безопасности.</li>
+    </ol>
+
+    <p><strong>Помните:</strong> Tor может анонимизировать сервер — но не ваши ошибки. Действуйте осторожно. Защищайте свою приватность.</p>
   </div>
 
     <div id="zh" class="article">翻译即将到来...</div>
