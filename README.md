@@ -5,7 +5,9 @@
 Unzip and run — TorServ includes hardened security defaults, built-in Tor integration, and a multilingual landing page to help visitors stay safe on the dark web.
 
 📢 **Follow development**: [@TorServ1](https://x.com/TorServ1)
+
 🔗 **Main Website**: [https://torserv.org](https://torserv.org)
+
 🛠️ **Website Source Code**: [https://github.com/torserv/torserv-web](https://github.com/torserv/torserv-web)
 
 [![Stars](https://img.shields.io/github/stars/torserv/torserv?style=flat-square)](https://github.com/torserv/torserv/stargazers)
