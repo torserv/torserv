@@ -132,6 +132,7 @@
       <div class="tab" onclick="showTab('es')">Español</div>
       <div class="tab" onclick="showTab('fa')">فارسی</div>
       <div class="tab" onclick="showTab('ru')">Русский</div>
+	  <div class="tab" onclick="showTab('it')">Italiano</div>
     </div>
 
   <div id="en" class="article active">
@@ -388,10 +389,56 @@
     <p><strong>Помните:</strong> Tor может анонимизировать сервер — но не ваши ошибки. Действуйте осторожно. Защищайте свою приватность.</p>
   </div>
 
-    <div id="zh" class="article">翻译即将到来...</div>
-    <div id="es" class="article">Traducción próximamente...</div>
-    <div id="fa" class="article">ترجمه به زودی...</div>
-    <div id="ru" class="article">Перевод скоро...</div>
+  <div id="it" class="article">
+    <h2>🔐 Benvenuto in TorServ</h2>
+    <p>
+      <strong>TorServ</strong> è un server web statico, sicuro e senza configurazione, che si avvia istantaneamente come servizio nascosto Tor.
+      È progettato per la pubblicazione anonima, soprattutto in ambienti censurati o ad alto rischio.
+    </p>
+
+    <h3>🚀 Decomprimi → Avvia il server → Ottieni un servizio nascosto</h3>
+    <p>
+      TorServ si avvia in pochi secondi, senza alcuna configurazione. Basta decomprimere ed eseguire. Non serve NGINX, Apache o installazioni di Tor a livello di sistema.<br>
+      Sono disponibili binari precompilati per Linux e Raspberry Pi, mentre per Windows non sono disponibili le versioni compilate a causa di falsi positivi degli antivirus.
+    </p>
+
+    <h3>⚠️ Stato del progetto: Sviluppo iniziale</h3>
+    <p>
+      Questo software è sperimentale. Pur avendo molte protezioni, <strong>non dovrebbe essere l'unica difesa</strong> in ambienti ostili o repressivi.
+      Consideralo ancora soggetto a bug. Usalo con cautela. La tua OPSEC personale è importante quanto la sicurezza informatica del server.
+    </p>
+
+    <h3>🛡️ Funzionalità di sicurezza principali</h3>
+    <ul>
+      <li>Accesso solo tramite Tor — nessuna esposizione alla rete aperta</li>
+      <li>Binding solo su 127.0.0.1 — non visibile in LAN o WAN</li>
+      <li>Nessun log di accesso, errore o richiesta</li>
+      <li>Nessuna telemetria o chiamate di rete esterne</li>
+      <li>Pulizia di EXIF e metadati all'avvio e in runtime</li>
+      <li>Sanitizzazione degli header — rimuove Referer, User-Agent, Date, ecc.</li>
+      <li>Temporizzazione casuale (50–200 ms) per mascherare i pattern di traffico</li>
+      <li>Supporto alla rotazione delle chiavi con il flag <code>--new-key</code></li>
+      <li>Padding uniforme delle risposte per nascondere le dimensioni dei file</li>
+      <li>Percorsi dei file offuscati e criptati nell'HTML</li>
+      <li>Niente indicizzazione automatica delle directory</li>
+      <li>Blocco dei tipi di file pericolosi prima e durante l'esecuzione</li>
+      <li>Avvio negato se vengono trovati file pericolosi in <code>public/</code></li>
+    </ul>
+
+    <h3>🧭 Come usare TorServ in sicurezza</h3>
+    <ol>
+      <li>Accedi solo tramite <strong>Tor Browser</strong>. Non usare mai un browser standard.</li>
+      <li><strong>Pulisci i metadati</strong> dei file prima di caricarli — anche se TorServ li rimuove automaticamente, la doppia difesa è meglio.</li>
+      <li>Evita informazioni personali nei nomi file, cartelle, contenuti o immagini.</li>
+      <li>Non condividere link su piattaforme di rete aperta (social, email, forum).</li>
+      <li>Usalo in ambienti isolati o usa e getta (es. Tails, Qubes, VM).</li>
+      <li>Verifica che il server sia raggiungibile solo via Tor.</li>
+      <li>Tieni d'occhio gli aggiornamenti del progetto per patch e miglioramenti.
+    </ol>
+
+    <p><strong>Ricorda:</strong> Tor può anonimizzare il tuo server, ma non i tuoi errori. Sii disciplinato. Proteggi la tua privacy.</p>
+  </div>
+  
   </div>
 
   <script>
