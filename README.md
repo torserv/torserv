@@ -22,7 +22,7 @@ Unzip and run — TorServ includes hardened security defaults, built-in Tor inte
 
 ---
 
-## 🌐 Onion Mirror
+## 🧅 Onion Mirror
 
 TorServe.org is accessible via the Tor network:
 
