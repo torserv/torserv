@@ -124,16 +124,12 @@ You may still build from source if needed.
 
 torserv is written in Go and requires the Tor binary to be present in a `tor/` directory inside the project.
 
----
-
 ### 📦 Requirements
 
 * Go 1.20+
 * Git
 * `tor` binary (from [torproject.org](https://www.torproject.org/download/tor/))
 * Optional: cross-compilers for other platforms
-
----
 
 ### 📁 Setup Instructions
 
@@ -142,8 +138,6 @@ git clone https://github.com/torserv/torserv.git
 cd TorServ
 mkdir tor/
 ```
-
----
 
 ### 🔍 Install Tor Binary
 
@@ -160,8 +154,6 @@ cp $(which tor) tor/
 #### Windows
 
 Download the [**Tor Expert Bundle**](https://www.torproject.org/download/tor/) and place `tor.exe` into `tor\`.
-
----
 
 ### 🔧 Build Commands
 
