@@ -26,7 +26,7 @@
     line-height: 1.7;
   }
 
-    .container {
+  .container {
     background: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -82,7 +82,7 @@
     transform: translateY(-1px);
   }
 
-    .tab.active {
+  .tab.active {
     background: linear-gradient(to right, #667eea, #7a6fb2);
     transform: scale(0.97);
     color: #fff;
@@ -236,6 +236,56 @@
     <p><strong>请记住：</strong> Tor 可以匿名化你的服务器，但无法弥补你的使用失误。保持谨慎，才能保有隐私。</p>
   </div>
 
+  <div id="ko" class="article">
+    <h2>🔐 TorServe에 오신 것을 환영합니다</h2>
+    <p>
+      <strong>TorServe</strong>는 설정이 필요 없는 강화된 정적 웹 서버로, 즉시 Tor 은닉 서비스로 실행됩니다.
+      검열되거나 위험한 환경에서 익명 게시를 위해 만들어졌습니다.
+    </p>
+
+    <h3>🚀 압축 해제 → 서버 시작 → 은닉 서비스 제공</h3>
+    <p>
+      TorServe는 설정 없이 몇 초 만에 실행됩니다. 그냥 압축을 풀고 실행하세요. NGINX, Apache, 또는 시스템 전체의 Tor 설치가 필요 없습니다.<br>
+      Linux 및 Raspberry Pi용 사전 빌드된 바이너리가 제공됩니다. Windows 빌드는 백신 프로그램의 오탐으로 인해 중단되었습니다.
+    </p>
+
+    <h3>⚠️ 프로젝트 상태: 초기 개발 단계</h3>
+    <p>
+      이 소프트웨어는 실험적입니다. 여러 안전장치가 마련되어 있지만, <strong>적대적이거나 억압적인 환경에서 단독으로 의존해서는 안 됩니다</strong>.
+      버그가 있을 수 있습니다. 주의해서 사용하세요. 서버의 강화만큼이나 사용자의 개인 보안(오펙)도 중요합니다.
+    </p>
+
+    <h3>🛡️ 핵심 보안 기능</h3>
+    <ul>
+      <li>Tor 전용 접근 — 클리어넷 노출 없음</li>
+      <li>127.0.0.1 전용 바인딩 — LAN 또는 WAN에서 보이지 않음</li>
+      <li>접속, 오류, 요청 등 모든 로그 없음</li>
+      <li>분석 도구나 외부 네트워크 호출 없음</li>
+      <li>EXIF 및 메타데이터 제거 (부팅 및 실행 중)</li>
+      <li>헤더 정리 — Referer, User-Agent, Date 등 제거</li>
+      <li>트래픽 패턴을 숨기기 위한 무작위 지연 (50–200ms)</li>
+      <li><code>--new-key</code> 플래그로 키 교체 지원</li>
+      <li>파일 크기를 숨기기 위한 균일한 응답 패딩</li>
+      <li>HTML 내 난독화 및 암호화된 파일 경로</li>
+      <li>자동 인덱싱 및 디렉토리 목록 없음</li>
+      <li>위험한 파일 형식은 실행 전후에 차단</li>
+      <li><code>public/</code> 디렉토리에 위험한 파일이 있으면 시작 실패</li>
+    </ul>
+
+    <h3>🧭 TorServe를 안전하게 사용하는 방법</h3>
+    <ol>
+      <li><strong>Tor 브라우저</strong>로만 접속하세요. 일반 브라우저는 절대 사용하지 마세요.</li>
+      <li>파일을 업로드하기 전에 <strong>모든 메타데이터를 제거</strong>하세요 — TorServe가 자동으로 정리하긴 하지만, 다층 방어가 최선입니다.</li>
+      <li>파일 이름, 폴더 이름, 파일 내용 또는 이미지에 <strong>개인 정보를 포함하지 마세요</strong>.</li>
+      <li>클리어넷 플랫폼(소셜 미디어, 이메일, 디스코드 등)에 링크를 공유하지 마세요.</li>
+      <li>Tails, Qubes, 가상 머신 등 격리되거나 일회용 환경에서 사용하세요.</li>
+      <li><strong>Tor를 통해서만</strong> 서버가 접근 가능한지 확인하세요.</li>
+      <li>보안 패치나 강화 변경사항을 위해 프로젝트 업데이트를 모니터링하세요.</li>
+    </ol>
+
+    <p><strong>기억하세요:</strong> Tor는 서버를 익명화할 수 있지만, 실수까지는 보호하지 못합니다. 철저함을 유지하세요. 프라이버시를 지키세요.</p>
+  </div>
+  
   <div id="es" class="article">
     <h2>🔐 Bienvenido a TorServ</h2>
     <p>
