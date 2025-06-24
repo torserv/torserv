@@ -207,7 +207,7 @@ torserv will auto-launch the Tor hidden service if `tor/` is present. If not, it
 
 ## 📜 License
 
-This project is licensed under the MIT License (see LICENSE.md)
+This project is licensed under the MIT License (see LICENSE file)
 
 ---
 
