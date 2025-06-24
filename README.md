@@ -98,8 +98,6 @@ cd TorServ
 ./torserv
 ```
 
----
-
 ### 🍓 Raspberry Pi (ARM64)
 
 ```bash
@@ -110,8 +108,6 @@ cd TorServ
 
 > The Tor hidden service will start and print a `.onion` address to the terminal.
 > Use [Tor Browser](https://www.torproject.org/download/) to access it.
-
----
 
 ### 🚫 Windows
 
@@ -205,6 +201,7 @@ torserv will auto-launch the Tor hidden service if `tor/` is present. If not, it
 * Español (Spanish)
 * Русский (Russian)
 * <span dir="ltr">فارسی (Farsi)</span>
+* Italiano (Italian)
 
 ---
 
