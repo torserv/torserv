@@ -85,6 +85,7 @@ The Tor hidden service starts automatically. The `.onion` address is printed to 
 * 🧳 **Offline-Only Assets** – Fully self-contained; no JS, fonts, or network calls
 * 🌍 **Static Safety Guide** – Tabbed multilingual HTML, fully local
 * 🧊 **File/Path Obfuscation** – Encrypted file references, not human-readable
+* 🤖 **Scanner Bot Trap** – Bots scanning for non existent paths/files get a slow trickle of garbage instead of 404
 
 ---
 
@@ -160,7 +161,7 @@ go build -o release/linux/TorServ/torserv ./cmd/torserv
 ```
 
 #### 🪟 Windows (Cross-compile from Linux/macOS)
-https://www.torproject.org/download/tor/
+
 ```bash
 sudo apt install gcc-mingw-w64
 
