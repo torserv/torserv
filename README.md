@@ -113,7 +113,7 @@ cd TorServ
 ### 🚫 Windows
 
 ⚠️ **Note:** Windows release dropped due to aggressive antivirus false positives.
-You may still build from source if needed.
+You may still build from source if desired.
 
 ---
 
@@ -154,7 +154,7 @@ Download the [**Tor Expert Bundle**](https://www.torproject.org/download/tor/) a
 
 ### 🔧 Build Commands
 
-#### 🐧 Linux (x86\_64 or ARM64, including Raspberry Pi from local terminal)
+#### 🐧 Linux (x86_64 or ARM64, including Raspberry Pi from local terminal)
 
 ```bash
 go build -o release/linux/TorServ/torserv ./cmd/torserv
