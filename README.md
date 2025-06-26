@@ -160,7 +160,7 @@ go build -o release/linux/TorServ/torserv ./cmd/torserv
 ```
 
 #### 🪟 Windows (Cross-compile from Linux/macOS)
-https://www.torproject.org/download/tor/
+
 ```bash
 sudo apt install gcc-mingw-w64
 
