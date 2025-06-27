@@ -31,7 +31,7 @@ func RewriteCSSLinks(css string) string {
 		original := matches[1]
 
 		// Skip rewriting if the URL is a data URI or absolute HTTP(S) link
-		if strings.HasPrefix(original, "data:") || strings.HasPrefix(original, "http") {
+		if strings.HasPrefix(original, "data:") || strings.HasPrefix(original, "http://") || strings.HasPrefix(original, "https://") {
 			return match
 		}
 

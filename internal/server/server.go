@@ -23,19 +23,6 @@ type headerFilter struct {
 	headersWritten bool
 }
 
-// WriteHeader overrides the default header writing behavior to remove
-// Date, Last-Modified, ETag, and Accept-Ranges headers for privacy/security.
-func (h *headerFilter) WriteHeader(code int) {
-	if !h.headersWritten {
-		h.Header().Del("Date")
-		h.Header().Del("Last-Modified")
-		h.Header().Del("ETag")
-		h.Header().Del("Accept-Ranges")
-		h.headersWritten = true
-	}
-	h.ResponseWriter.WriteHeader(code)
-}
-
 // WatchLive monitors a directory for new file creations.
 // When a new file appears, it is scrubbed automatically using scrub.ScrubFile.
 func WatchLive(dir string) error {
@@ -88,7 +75,7 @@ func Start() error {
 	} else if exposed {
 		fmt.Println("[!!!] SECURITY ERROR: Port 8080 is accessible from the clearnet.")
 		fmt.Println("      This can expose your files and defeat Tor anonymity.")
-		fmt.Println("      TorServe will NOT run until this is fixed.\n")
+		fmt.Println("      TorServe will NOT run until this is fixed.")
 		fmt.Println("🔒 To fix this, run:")
 		fmt.Println("    sudo iptables -A INPUT -i lo -p tcp --dport 8080 -j ACCEPT")
 		fmt.Println("    sudo iptables -A INPUT -p tcp --dport 8080 -j DROP")

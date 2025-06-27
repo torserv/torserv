@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	// Parse the command-line flag to determine if a new onion key should be generated
+	// Parse command-line flags, e.g., --new-key to generate a new onion address
 	newKey := flag.Bool("new-key", false, "Generate a new onion address")
 	flag.Parse()
 

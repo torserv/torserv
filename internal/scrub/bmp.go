@@ -23,13 +23,17 @@ func ScrubBMP(path string) error {
 		return fmt.Errorf("decode error: %w", err)
 	}
 
-	// Create a temporary file to hold the cleaned image
+	// Create a temporary file in the same directory to hold the cleaned image
 	tmpPath := path + ".clean"
 	tmpFile, err := os.Create(tmpPath)
 	if err != nil {
-		return fmt.Errorf("temp file error: %w", err)
+		return fmt.Errorf("failed to create temporary file %s: %w", tmpPath, err)
 	}
-	defer tmpFile.Close()
+	defer func() {
+		if cerr := tmpFile.Close(); cerr != nil {
+			fmt.Fprintf(os.Stderr, "warning: failed to close temp file %s: %v\n", tmpPath, cerr)
+		}
+	}()
 
 	// Re-encode the image without metadata
 	if err := bmp.Encode(tmpFile, img); err != nil {

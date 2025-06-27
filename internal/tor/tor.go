@@ -2,7 +2,6 @@ package tor
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -27,7 +26,7 @@ func WaitForHostname() (string, error) {
 	hostnamePath := filepath.Join("hidden_service", "hostname")
 
 	for i := 0; i < 30; i++ {
-		data, err := ioutil.ReadFile(hostnamePath)
+		data, err := os.ReadFile(hostnamePath)
 		if err == nil {
 			return string(data), nil
 		}

@@ -25,6 +25,7 @@ func ScrubJPEG(path string) error {
 	}
 
 	// Re-encode the image into memory without metadata
+	// Re-encode with fixed quality; may differ in size from original
 	var buf bytes.Buffer
 	err = jpeg.Encode(&buf, img, &jpeg.Options{Quality: 90})
 	if err != nil {
@@ -32,12 +33,16 @@ func ScrubJPEG(path string) error {
 	}
 
 	// Write scrubbed image to a temporary file
-	tmpPath := path + ".scrubbed"
+	tmpPath := fmt.Sprintf("%s.scrubbed", path)
 	tmp, err := os.Create(tmpPath)
 	if err != nil {
-		return fmt.Errorf("failed to create temp file: %w", err)
+		return fmt.Errorf("failed to create temp file %s: %w", tmpPath, err)
 	}
-	defer tmp.Close()
+	defer func() {
+		if cerr := tmp.Close(); cerr != nil {
+			fmt.Fprintf(os.Stderr, "warning: failed to close temp file %s: %v\n", tmpPath, cerr)
+		}
+	}()
 
 	if _, err := io.Copy(tmp, &buf); err != nil {
 		return fmt.Errorf("failed to write scrubbed JPEG: %w", err)

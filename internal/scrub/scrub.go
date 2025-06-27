@@ -42,7 +42,7 @@ func Init() error {
 	})
 }
 
-// contains checks if the given target extension exists in the provided list.
+// contains checks if the given target extension exists in the provided list, returns if true.
 func contains(list []string, target string) bool {
 	for _, ext := range list {
 		if ext == target {

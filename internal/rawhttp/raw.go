@@ -13,6 +13,9 @@ import (
 	"torserve/internal/cloak"
 )
 
+// Padding const
+const paddingSize = 512 * 1024
+
 // init registers custom MIME types for specific file extensions.
 // This ensures correct Content-Type headers are set when serving these files.
 func init() {
@@ -127,7 +130,7 @@ func handleConnection(conn net.Conn) {
 	}
 
 	// Pad file content to 512KB alignment
-	paddedLen := ((len(data) + 512*1024 - 1) / (512 * 1024)) * (512 * 1024)
+	paddedLen := ((len(data) + paddingSize - 1) / paddingSize) * paddingSize
 
 	// Serve the file with optional rewriting for HTML or CSS
 	if method == "GET" {
@@ -186,7 +189,8 @@ func writeHeaders(conn net.Conn, contentLength int, contentType string) {
 }
 
 // writeNotFound sends a fake 200 OK with a chunked transfer response that pretends to serve content
-// but actually returns garbage data to trap bots or probes.
+// but actually trickles garbage data to trap, confuse and waste resources of bots, scanners and probes.
+// This costs our server almost nothing to do but has a sizeable impact on hostile bots.
 func writeNotFound(conn net.Conn) {
 	headers := "HTTP/1.1 200 OK\r\n" +
 		"Content-Type: application/octet-stream\r\n" +

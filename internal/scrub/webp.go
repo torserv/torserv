@@ -24,12 +24,16 @@ func ScrubWEBP(path string) error {
 	}
 
 	// Create a temporary file to hold the scrubbed image
-	tmpPath := path + ".clean"
+	tmpPath := fmt.Sprintf("%s.clean", path)
 	out, err := os.Create(tmpPath)
 	if err != nil {
-		return fmt.Errorf("create error: %w", err)
+		return fmt.Errorf("failed to create temp file %s: %w", tmpPath, err)
 	}
-	defer out.Close()
+	defer func() {
+		if cerr := out.Close(); cerr != nil {
+			fmt.Fprintf(os.Stderr, "warning: failed to close temp file %s: %v\n", tmpPath, cerr)
+		}
+	}()
 
 	// Encode image in lossless mode
 	if err := webp.Encode(out, img, &webp.Options{Lossless: true}); err != nil {

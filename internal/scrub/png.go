@@ -3,6 +3,7 @@ package scrub
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"io"
 	"os"
 )
@@ -75,9 +76,9 @@ func ScrubPNG(path string) error {
 	}
 
 	// Write scrubbed content to a temporary file
-	tmpPath := path + ".clean"
+	tmpPath := fmt.Sprintf("%s.clean", path)
 	if err := os.WriteFile(tmpPath, output.Bytes(), 0644); err != nil {
-		return err
+		return fmt.Errorf("failed to write cleaned PNG to %s: %w", tmpPath, err)
 	}
 
 	// Replace the original file
