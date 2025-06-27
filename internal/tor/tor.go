@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// cmd holds the currently running Tor process
+// Start launches the Tor process using the local 'torrc' configuration file.
 var cmd *exec.Cmd
 
 // Start launches the Tor process using the local 'torrc' configuration file.
@@ -42,4 +42,9 @@ func Stop() error {
 		return cmd.Process.Kill()
 	}
 	return nil
+}
+
+func isChrooted() bool {
+	link, err := os.Readlink("/proc/1/root")
+	return err == nil && link != "/"
 }

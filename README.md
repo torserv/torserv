@@ -117,6 +117,18 @@ You may still build from source if desired.
 
 ---
 
+## 🔒 Running TorServe Safely with Firejail
+
+We recommend running TorServe in a lightweight sandbox using [Firejail](https://firejail.wordpress.com):
+
+```bash
+sudo apt install firejail
+firejail --noprofile --private=$(pwd) ./torserv
+
+```
+
+---
+
 ## 🛠️ Build from Source
 
 torserv is written in Go and requires the Tor binary to be present in a `tor/` directory inside the project.

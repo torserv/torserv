@@ -2,5 +2,5 @@ HiddenServiceDir ./hidden_service
 HiddenServicePort 80 127.0.0.1:8080
 SocksPort 0
 Log notice stdout
-GeoIPFile /dev/null
-GeoIPv6File /dev/null
+GeoIPFile ""
+GeoIPv6File ""
