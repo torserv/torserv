@@ -86,6 +86,7 @@ The Tor hidden service starts automatically. The `.onion` address is printed to 
 * 🌍 **Static Safety Guide** – Tabbed multilingual HTML, fully local
 * 🧊 **File/Path Obfuscation** – Encrypted file references, not human-readable
 * 🤖 **Scanning Bot Trap** – Bots scanning for non existent directories/files get a slow trickle of garbage instead of 404
+* 🔒 **Firejail Sandboxing** – Automatically runs in a lightweight security sandbox if Firejail is installed
 
 ---
 
@@ -119,12 +120,41 @@ You may still build from source if desired.
 
 ## 🔒 Running TorServe Safely with Firejail
 
-We recommend running TorServe in a lightweight sandbox using [Firejail](https://firejail.wordpress.com):
+TorServe now includes **built-in Firejail sandboxing**. If Firejail is installed, TorServe will automatically re-execute itself inside a secure container to reduce attack surface.
+
+### ✅ Default Behavior
+
+Just run TorServe as usual:
 
 ```bash
-sudo apt install firejail
-firejail --noprofile --private=$(pwd) ./torserv
+./torserv
+```
 
+If Firejail is available, you’ll see:
+
+```
+[*] Launching inside Firejail sandbox...
+```
+
+If Firejail is not installed, TorServe will still run normally and recommend installing it for improved security.
+
+---
+
+### ❎ Disable Firejail
+
+To skip sandboxing (e.g., for debugging):
+
+```bash
+./torserv --no-firejail
+```
+
+---
+
+### 🛠️ Installing Firejail (Debian/Ubuntu)
+
+```bash
+sudo apt update
+sudo apt install firejail
 ```
 
 ---
