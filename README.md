@@ -138,8 +138,6 @@ If Firejail is available, you’ll see:
 
 If Firejail is not installed, TorServe will still run normally and recommend installing it for improved security.
 
----
-
 ### ❎ Disable Firejail
 
 To skip sandboxing (e.g., for debugging):
@@ -147,16 +145,12 @@ To skip sandboxing (e.g., for debugging):
 ```bash
 ./torserv --no-firejail
 ```
-
----
-
 ### 🛠️ Installing Firejail (Debian/Ubuntu)
 
 ```bash
 sudo apt update
 sudo apt install firejail
 ```
-
 ---
 
 ## 🛠️ Build from Source
