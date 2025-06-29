@@ -272,8 +272,6 @@ Welcoming:
 * 🧠 Thoughtful feedback
 * 💸 [Financial support](https://paypal.me/torserv) - This project incurs monthly expenses to run
 
-👉 [Join the discussions](https://github.com/torserv/torserv/discussions)
-
 ---
 
 ### 🧅 Tor Binary Licensing
