@@ -8,12 +8,12 @@ import (
 )
 
 // List of supported image extensions for scrubbing
-var supported = []string{".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"}
+var supported = []string{".jpg", ".jpeg", ".png", ".gif", ".bmp"}
 
 // List of known unsafe file types to reject
 var unsafe = []string{
 	".doc", ".docx", ".pptx", ".xls", ".xlsx", ".odt",
-	".mp4", ".mp3", ".mkv", ".mov", ".pdf",
+	".mp4", ".mp3", ".mkv", ".mov", ".pdf", ".webp",
 }
 
 // Init walks the "public" directory, scrubs supported image files,
@@ -63,8 +63,6 @@ func ScrubFile(path, ext string) error {
 		return ScrubGIF(path)
 	case ".bmp":
 		return ScrubBMP(path)
-	case ".webp":
-		return ScrubWEBP(path)
 	default:
 		// Unsupported extensions are ignored
 		return nil

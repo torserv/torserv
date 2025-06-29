@@ -65,7 +65,7 @@ The Tor hidden service starts automatically. The `.onion` address is printed to 
 * ✅ **Hardened static file server** written in Go (raw TCP, no framework)
 * ✅ **Automatic Tor hidden service**, self-contained (bundled `tor`)
 * ✅ **Multilingual `index.html`** with embedded safety instructions
-* ✅ **Image metadata scrubbing** for JPEG, PNG, GIF, BMP, WebP
+* ✅ **Image metadata scrubbing** for JPEG, PNG, GIF, BMP
 * ✅ **Optional `.onion` key rotation** via `--new-key`
 * ✅ **Encrypted file paths in HTML** — no filenames or directories exposed
 * ✅ **Chunked transfer encoding + response padding** to resist fingerprinting
@@ -204,7 +204,7 @@ sudo apt update
 sudo apt install gcc-mingw-w64
 
 GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc \
-CGO_ENABLED=1 go build -o release/windows/TorServ/torserv.exe ./cmd/torserv
+CGO_ENABLED=0 go build -o release/windows/TorServ/torserv.exe ./cmd/torserv
 ```
 
 #### 🍓 Raspberry Pi 4+ (ARM64, cross-compiled)
@@ -214,7 +214,7 @@ sudo apt update
 sudo apt install gcc-aarch64-linux-gnu
 
 GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc \
-CGO_ENABLED=1 go build -o release/rpi/TorServ/torserv ./cmd/torserv
+CGO_ENABLED=0 go build -o release/rpi/TorServ/torserv ./cmd/torserv
 ```
 
 ---
