@@ -200,21 +200,15 @@ go build -o release/linux/TorServ/torserv ./cmd/torserv
 #### 🪟 Windows (Cross-compile from Linux/macOS)
 
 ```bash
-sudo apt update
-sudo apt install gcc-mingw-w64
-
-GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc \
-CGO_ENABLED=0 go build -o release/windows/TorServ/torserv.exe ./cmd/torserv
+GOOS=windows GOARCH=amd64 CGO_ENABLED=0 \
+go build -o release/windows/TorServ/torserv.exe ./cmd/torserv
 ```
 
 #### 🍓 Raspberry Pi 4+ (ARM64, cross-compiled)
 
 ```bash
-sudo apt update
-sudo apt install gcc-aarch64-linux-gnu
-
-GOOS=linux GOARCH=arm64 CC=aarch64-linux-gnu-gcc \
-CGO_ENABLED=0 go build -o release/rpi/TorServ/torserv ./cmd/torserv
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 \
+go build -o release/rpi/TorServ/torserv ./cmd/torserv
 ```
 
 ---
